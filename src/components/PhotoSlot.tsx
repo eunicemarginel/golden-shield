@@ -1,9 +1,14 @@
 import Image from "next/image";
 
-export type MediaLike = {
+type PopulatedMedia = {
   url?: string | null;
   alt?: string | null;
-} | null | undefined;
+};
+
+// Upload relationships can come back as just an ID number when unpopulated
+// (Payload's generated types always include this case), even though the
+// default query depth here populates the full object in practice.
+export type MediaLike = PopulatedMedia | number | null | undefined;
 
 export function PhotoSlot({
   image,
@@ -18,12 +23,14 @@ export function PhotoSlot({
   className?: string;
   sizes?: string;
 }) {
-  if (image?.url) {
+  const media = typeof image === "object" ? image : null;
+
+  if (media?.url) {
     return (
       <div className={`relative overflow-hidden rounded-2xl ${aspect} ${className}`}>
         <Image
-          src={image.url}
-          alt={image.alt || label}
+          src={media.url}
+          alt={media.alt || label}
           fill
           sizes={sizes}
           className="object-cover"
