@@ -45,6 +45,7 @@ export default async function BlogPage() {
               })}
               title={post.title}
               description={post.excerpt}
+              image={post.heroImage}
             />
           ))}
         </div>

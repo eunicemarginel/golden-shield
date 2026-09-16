@@ -6,6 +6,7 @@ import { postgresAdapter } from "@payloadcms/db-postgres";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { seoPlugin } from "@payloadcms/plugin-seo";
 import { formBuilderPlugin } from "@payloadcms/plugin-form-builder";
+import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
 
 import { Users } from "@/collections/Users";
 import { Media } from "@/collections/Media";
@@ -53,6 +54,10 @@ export default buildConfig({
           plural: "Quote Request Forms",
         },
       },
+    }),
+    vercelBlobStorage({
+      collections: { media: true },
+      token: process.env.BLOB_READ_WRITE_TOKEN,
     }),
   ],
 });

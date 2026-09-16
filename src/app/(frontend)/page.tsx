@@ -1,6 +1,7 @@
 import { Container } from "@/components/Container";
 import { Button } from "@/components/Button";
 import { Card } from "@/components/Card";
+import { HeroVideo } from "@/components/HeroVideo";
 
 const stats = [
   { value: "10+", label: "Years in Operation" },
@@ -66,8 +67,9 @@ const framework = [
 export default function Home() {
   return (
     <>
-      <section className="bg-ink text-white">
-        <Container className="flex flex-col gap-10 py-24 lg:py-32">
+      <section className="relative overflow-hidden bg-ink text-white">
+        <HeroVideo />
+        <Container className="relative z-10 flex flex-col gap-10 py-24 lg:py-32">
           <div className="max-w-2xl">
             <span className="text-xs font-semibold uppercase tracking-[0.3em] text-gold-bright">
               Singapore Security &middot; Est. 2019

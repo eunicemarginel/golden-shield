@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/Container";
+import { PhotoSlot } from "@/components/PhotoSlot";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -58,6 +59,14 @@ export default function AboutPage() {
             locally.
           </p>
         </div>
+
+        <PhotoSlot
+          image={undefined}
+          label="Office or team photo"
+          aspect="aspect-[21/9]"
+          className="mt-10"
+          sizes="(min-width: 1024px) 1024px, 100vw"
+        />
 
         <div className="mt-16 grid gap-6 sm:grid-cols-3">
           {values.map((item) => (

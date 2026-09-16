@@ -4,6 +4,8 @@ import { Container } from "@/components/Container";
 import { RichText } from "@/components/RichText";
 import { Card } from "@/components/Card";
 import { Button } from "@/components/Button";
+import { PhotoSlot } from "@/components/PhotoSlot";
+import type { MediaLike } from "@/components/PhotoSlot";
 import { getPayloadClient } from "@/lib/payload";
 
 type Args = { params: Promise<{ slug: string }> };
@@ -13,6 +15,7 @@ type RelatedDoc = {
   slug: string;
   title: string;
   summary: string;
+  heroImage?: MediaLike;
 };
 
 async function getIndustry(slug: string) {
@@ -20,7 +23,7 @@ async function getIndustry(slug: string) {
   const { docs } = await payload.find({
     collection: "industries",
     where: { slug: { equals: slug } },
-    depth: 1,
+    depth: 2,
     limit: 1,
   });
   return docs[0] ?? null;
@@ -58,6 +61,14 @@ export default async function IndustryDetailPage({ params }: Args) {
       </h1>
       <p className="mt-4 max-w-2xl text-foreground-muted">{industry.summary}</p>
 
+      <PhotoSlot
+        image={industry.heroImage}
+        label={`${industry.title} photo`}
+        aspect="aspect-[21/9]"
+        className="mt-10"
+        sizes="(min-width: 1024px) 1024px, 100vw"
+      />
+
       <div className="mt-10 grid gap-12 lg:grid-cols-3">
         <div className="lg:col-span-2">
           <RichText data={industry.body} />
@@ -85,6 +96,7 @@ export default async function IndustryDetailPage({ params }: Args) {
               eyebrow="Service"
               title={service.title}
               description={service.summary}
+              image={service.heroImage}
             />
           ))}
           {relatedProducts.map((product) => (
@@ -94,6 +106,7 @@ export default async function IndustryDetailPage({ params }: Args) {
               eyebrow="Product"
               title={product.title}
               description={product.summary}
+              image={product.heroImage}
             />
           ))}
         </div>

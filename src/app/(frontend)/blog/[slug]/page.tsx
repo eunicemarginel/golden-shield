@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/Container";
 import { RichText } from "@/components/RichText";
+import { PhotoSlot } from "@/components/PhotoSlot";
 import { getPayloadClient } from "@/lib/payload";
 
 type Args = { params: Promise<{ slug: string }> };
@@ -44,6 +45,14 @@ export default async function BlogPostPage({ params }: Args) {
         {post.title}
       </h1>
       <p className="mt-4 max-w-2xl text-foreground-muted">{post.excerpt}</p>
+
+      <PhotoSlot
+        image={post.heroImage}
+        label={`${post.title} photo`}
+        aspect="aspect-[21/9]"
+        className="mt-10 max-w-3xl"
+        sizes="(min-width: 1024px) 768px, 100vw"
+      />
 
       <div className="mt-10 max-w-3xl">
         <RichText data={post.body} />

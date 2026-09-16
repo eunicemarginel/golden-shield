@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Container } from "@/components/Container";
 import { RichText } from "@/components/RichText";
 import { Button } from "@/components/Button";
+import { PhotoSlot } from "@/components/PhotoSlot";
 import { getPayloadClient } from "@/lib/payload";
 
 type Args = { params: Promise<{ slug: string }> };
@@ -41,6 +42,14 @@ export default async function ProductDetailPage({ params }: Args) {
         {product.title}
       </h1>
       <p className="mt-4 max-w-2xl text-foreground-muted">{product.summary}</p>
+
+      <PhotoSlot
+        image={product.heroImage}
+        label={`${product.title} photo`}
+        aspect="aspect-[21/9]"
+        className="mt-10"
+        sizes="(min-width: 1024px) 1024px, 100vw"
+      />
 
       <div className="mt-10 grid gap-12 lg:grid-cols-3">
         <div className="lg:col-span-2">

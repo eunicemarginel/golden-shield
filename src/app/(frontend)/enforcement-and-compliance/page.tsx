@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { Container } from "@/components/Container";
 import { Card } from "@/components/Card";
 import { getPayloadClient } from "@/lib/payload";
@@ -43,6 +43,7 @@ export default async function EnforcementPage() {
               href={`/enforcement-and-compliance/${service.slug}`}
               title={service.title}
               description={service.summary}
+              image={service.heroImage}
             />
           ))}
         </div>

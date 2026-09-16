@@ -11,8 +11,9 @@
   --ink: #0d0f14;
   --ink-muted: #b7b9c3;
 
-  --gold: #b3893f;
-  --gold-bright: #e4c77a;
+  --gold: #d6b95e;
+  --gold-bright: #e8cf82;
+  --gold-dark: #b3953f;
   --gold-foreground: #1a1a1c;
 }
 
@@ -28,6 +29,7 @@
 
   --color-gold: var(--gold);
   --color-gold-bright: var(--gold-bright);
+  --color-gold-dark: var(--gold-dark);
   --color-gold-foreground: var(--gold-foreground);
 
   --font-sans: var(--font-geist-sans);
@@ -37,4 +39,20 @@
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.45s;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
 }

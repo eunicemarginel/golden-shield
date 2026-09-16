@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import Image from "next/image";
 import { useState } from "react";
 import { Container } from "@/components/Container";
@@ -12,8 +12,8 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
-      <Container className="flex h-20 items-center justify-between">
-        <Link href="/" className="flex items-center">
+      <div className="mx-auto flex h-20 w-full max-w-[1440px] items-center justify-between px-6 lg:px-10">
+        <Link href="/" className="flex shrink-0 items-center">
           <Image
             src="/brand/logo-full.png"
             alt="Golden Shield Security Services"
@@ -24,12 +24,12 @@ export function Header() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-8 lg:flex">
+        <nav className="hidden flex-1 items-center justify-evenly px-10 lg:flex">
           {primaryNav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-foreground-muted transition-colors hover:text-foreground"
+              className="text-sm font-medium whitespace-nowrap text-foreground-muted transition-colors hover:text-foreground"
             >
               {item.label}
             </Link>
@@ -38,14 +38,14 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-foreground-muted transition-colors hover:text-foreground"
+              className="text-sm font-medium whitespace-nowrap text-foreground-muted transition-colors hover:text-foreground"
             >
               {item.label}
             </Link>
           ))}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden shrink-0 lg:block">
           <Button href="/contact-us" variant="primary">
             Get a Free Assessment
           </Button>
@@ -65,7 +65,7 @@ export function Header() {
             <span className="h-0.5 w-5 bg-foreground" />
           </div>
         </button>
-      </Container>
+      </div>
 
       {open && (
         <div className="border-t border-border bg-background lg:hidden">

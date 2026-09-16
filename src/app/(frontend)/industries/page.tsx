@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { Container } from "@/components/Container";
 import { Card } from "@/components/Card";
 import { getPayloadClient } from "@/lib/payload";
@@ -42,6 +42,7 @@ export default async function IndustriesPage() {
               href={`/industries/${industry.slug}`}
               title={industry.title}
               description={industry.summary}
+              image={industry.heroImage}
             />
           ))}
         </div>
