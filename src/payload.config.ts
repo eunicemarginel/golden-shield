@@ -63,6 +63,14 @@ export default buildConfig({
           singular: "Quote Request Form",
           plural: "Quote Request Forms",
         },
+        admin: {
+          group: "Forms",
+        },
+      },
+      formSubmissionOverrides: {
+        admin: {
+          group: "Forms",
+        },
       },
     }),
     vercelBlobStorage({

@@ -5,8 +5,10 @@ import { slugField } from "@/fields/slug";
 export const Products: CollectionConfig = {
   slug: "products",
   admin: {
+    group: "Content",
     useAsTitle: "title",
-    defaultColumns: ["title", "slug", "updatedAt"],
+    defaultColumns: ["title", "updatedAt"],
+    description: "AI & security technology products shown on /products.",
   },
   access: {
     read: () => true,
@@ -33,6 +35,9 @@ export const Products: CollectionConfig = {
       name: "heroImage",
       type: "upload",
       relationTo: "media",
+      admin: {
+        description: "Shown at the top of this product's page. Upload photos in the Media section first, then pick one here.",
+      },
     },
     {
       name: "body",

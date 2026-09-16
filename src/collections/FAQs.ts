@@ -7,8 +7,10 @@ export const FAQs: CollectionConfig = {
     plural: "FAQs",
   },
   admin: {
+    group: "Content",
     useAsTitle: "question",
     defaultColumns: ["question", "category"],
+    description: "Questions shown on /faq, and on service/product/industry pages they're linked to.",
   },
   access: {
     read: () => true,

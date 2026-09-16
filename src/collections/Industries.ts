@@ -5,8 +5,10 @@ import { slugField } from "@/fields/slug";
 export const Industries: CollectionConfig = {
   slug: "industries",
   admin: {
+    group: "Content",
     useAsTitle: "title",
-    defaultColumns: ["title", "slug", "updatedAt"],
+    defaultColumns: ["title", "updatedAt"],
+    description: "Industry/sector pages shown on /industries.",
   },
   access: {
     read: () => true,
@@ -33,6 +35,9 @@ export const Industries: CollectionConfig = {
       name: "heroImage",
       type: "upload",
       relationTo: "media",
+      admin: {
+        description: "Shown at the top of this industry's page. Upload photos in the Media section first, then pick one here.",
+      },
     },
     {
       name: "body",

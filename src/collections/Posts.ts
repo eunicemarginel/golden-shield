@@ -9,8 +9,10 @@ export const Posts: CollectionConfig = {
     plural: "Blog Posts",
   },
   admin: {
+    group: "Content",
     useAsTitle: "title",
-    defaultColumns: ["title", "slug", "publishedDate", "updatedAt"],
+    defaultColumns: ["title", "publishedDate", "updatedAt"],
+    description: "Articles shown on /blog.",
   },
   access: {
     read: () => true,
@@ -34,6 +36,9 @@ export const Posts: CollectionConfig = {
       name: "heroImage",
       type: "upload",
       relationTo: "media",
+      admin: {
+        description: "Shown at the top of this post. Upload photos in the Media section first, then pick one here.",
+      },
     },
     {
       name: "publishedDate",

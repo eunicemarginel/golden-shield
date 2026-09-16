@@ -5,8 +5,10 @@ import { slugField } from "@/fields/slug";
 export const Services: CollectionConfig = {
   slug: "services",
   admin: {
+    group: "Content",
     useAsTitle: "title",
-    defaultColumns: ["title", "slug", "updatedAt"],
+    defaultColumns: ["title", "category", "updatedAt"],
+    description: "Core guarding services (/services) and enforcement & compliance services (/enforcement-and-compliance) — set which via the Category field.",
   },
   access: {
     read: () => true,
@@ -47,6 +49,9 @@ export const Services: CollectionConfig = {
       name: "heroImage",
       type: "upload",
       relationTo: "media",
+      admin: {
+        description: "Shown at the top of this service's page. Upload photos in the Media section first, then pick one here.",
+      },
     },
     {
       name: "body",

@@ -9,8 +9,10 @@ export const JobOpenings: CollectionConfig = {
     plural: "Job Openings",
   },
   admin: {
+    group: "Content",
     useAsTitle: "title",
-    defaultColumns: ["title", "employmentType", "updatedAt"],
+    defaultColumns: ["title", "employmentType", "isOpen"],
+    description: "Job listings shown on /careers.",
   },
   access: {
     read: () => true,
