@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@/components/Container";
 import { companyInfo, primaryNav, secondaryNav } from "@/lib/nav";
 
@@ -7,10 +8,14 @@ export function Footer() {
     <footer className="border-t border-border bg-ink text-ink-muted">
       <Container className="grid gap-10 py-16 md:grid-cols-4">
         <div className="md:col-span-2">
-          <span className="text-lg font-bold tracking-tight text-white">
-            GOLDEN SHIELD
-          </span>
-          <p className="mt-3 max-w-sm text-sm leading-relaxed">
+          <Image
+            src="/brand/logo-full.png"
+            alt="Golden Shield Security Services"
+            width={678}
+            height={260}
+            className="h-10 w-auto"
+          />
+          <p className="mt-4 max-w-sm text-sm leading-relaxed">
             Licensed, disciplined and technology-driven security services in
             Singapore &mdash; combining trained manpower with AI-powered
             surveillance and monitoring.

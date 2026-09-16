@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { Container } from "@/components/Container";
 import { Button } from "@/components/Button";
@@ -12,13 +13,15 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
       <Container className="flex h-20 items-center justify-between">
-        <Link href="/" className="flex flex-col leading-none">
-          <span className="text-lg font-bold tracking-tight text-foreground">
-            GOLDEN SHIELD
-          </span>
-          <span className="text-[0.65rem] font-medium tracking-[0.2em] text-gold uppercase">
-            Security Services
-          </span>
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/brand/logo-full.png"
+            alt="Golden Shield Security Services"
+            width={678}
+            height={260}
+            priority
+            className="h-14 w-auto"
+          />
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">
