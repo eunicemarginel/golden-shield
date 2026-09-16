@@ -13,6 +13,9 @@ export const Posts: CollectionConfig = {
     useAsTitle: "title",
     defaultColumns: ["title", "publishedDate", "updatedAt"],
     description: "Articles shown on /blog.",
+    livePreview: {
+      url: ({ data }) => `/blog/${data.slug}`,
+    },
   },
   access: {
     read: () => true,

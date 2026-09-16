@@ -9,6 +9,12 @@ export const Services: CollectionConfig = {
     useAsTitle: "title",
     defaultColumns: ["title", "category", "updatedAt"],
     description: "Core guarding services (/services) and enforcement & compliance services (/enforcement-and-compliance) — set which via the Category field.",
+    livePreview: {
+      url: ({ data }) =>
+        data.category === "enforcement"
+          ? `/enforcement-and-compliance/${data.slug}`
+          : `/services/${data.slug}`,
+    },
   },
   access: {
     read: () => true,

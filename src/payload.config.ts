@@ -32,6 +32,9 @@ export default buildConfig({
         Logo: "/src/components/payload/Logo.tsx#Logo",
         Icon: "/src/components/payload/Icon.tsx#Icon",
       },
+      beforeDashboard: [
+        "/src/components/payload/RecentQuoteRequests.tsx#RecentQuoteRequests",
+      ],
     },
   },
   collections: [Users, Media, Services, Products, Industries, Posts, FAQs, JobOpenings],

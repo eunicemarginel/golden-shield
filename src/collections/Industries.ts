@@ -9,6 +9,9 @@ export const Industries: CollectionConfig = {
     useAsTitle: "title",
     defaultColumns: ["title", "updatedAt"],
     description: "Industry/sector pages shown on /industries.",
+    livePreview: {
+      url: ({ data }) => `/industries/${data.slug}`,
+    },
   },
   access: {
     read: () => true,

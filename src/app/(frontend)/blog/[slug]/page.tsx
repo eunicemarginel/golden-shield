@@ -3,15 +3,19 @@ import { notFound } from "next/navigation";
 import { Container } from "@/components/Container";
 import { RichText } from "@/components/RichText";
 import { PhotoSlot } from "@/components/PhotoSlot";
+import { LivePreviewRefresh } from "@/components/payload/LivePreviewRefresh";
 import { getPayloadClient } from "@/lib/payload";
+import { isPreviewRequest } from "@/lib/preview";
 
 type Args = { params: Promise<{ slug: string }> };
 
 async function getPost(slug: string) {
   const payload = await getPayloadClient();
+  const draft = await isPreviewRequest(payload);
   const { docs } = await payload.find({
     collection: "posts",
     where: { slug: { equals: slug } },
+    draft,
     limit: 1,
   });
   return docs[0] ?? null;
@@ -34,6 +38,7 @@ export default async function BlogPostPage({ params }: Args) {
 
   return (
     <Container className="py-20">
+      <LivePreviewRefresh />
       <span className="text-sm font-semibold uppercase tracking-widest text-gold">
         {new Date(post.publishedDate).toLocaleDateString("en-SG", {
           year: "numeric",

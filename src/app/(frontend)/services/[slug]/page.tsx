@@ -4,15 +4,19 @@ import { Container } from "@/components/Container";
 import { RichText } from "@/components/RichText";
 import { Button } from "@/components/Button";
 import { PhotoSlot } from "@/components/PhotoSlot";
+import { LivePreviewRefresh } from "@/components/payload/LivePreviewRefresh";
 import { getPayloadClient } from "@/lib/payload";
+import { isPreviewRequest } from "@/lib/preview";
 
 type Args = { params: Promise<{ slug: string }> };
 
 async function getService(slug: string) {
   const payload = await getPayloadClient();
+  const draft = await isPreviewRequest(payload);
   const { docs } = await payload.find({
     collection: "services",
     where: { slug: { equals: slug }, category: { equals: "core" } },
+    draft,
     limit: 1,
   });
   return docs[0] ?? null;
@@ -35,6 +39,7 @@ export default async function ServiceDetailPage({ params }: Args) {
 
   return (
     <Container className="py-20">
+      <LivePreviewRefresh />
       <span className="text-sm font-semibold uppercase tracking-widest text-gold">
         Service
       </span>

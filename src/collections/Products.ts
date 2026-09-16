@@ -9,6 +9,9 @@ export const Products: CollectionConfig = {
     useAsTitle: "title",
     defaultColumns: ["title", "updatedAt"],
     description: "AI & security technology products shown on /products.",
+    livePreview: {
+      url: ({ data }) => `/products/${data.slug}`,
+    },
   },
   access: {
     read: () => true,

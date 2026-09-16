@@ -6,7 +6,9 @@ import { Card } from "@/components/Card";
 import { Button } from "@/components/Button";
 import { PhotoSlot } from "@/components/PhotoSlot";
 import type { MediaLike } from "@/components/PhotoSlot";
+import { LivePreviewRefresh } from "@/components/payload/LivePreviewRefresh";
 import { getPayloadClient } from "@/lib/payload";
+import { isPreviewRequest } from "@/lib/preview";
 
 type Args = { params: Promise<{ slug: string }> };
 
@@ -20,10 +22,12 @@ type RelatedDoc = {
 
 async function getIndustry(slug: string) {
   const payload = await getPayloadClient();
+  const draft = await isPreviewRequest(payload);
   const { docs } = await payload.find({
     collection: "industries",
     where: { slug: { equals: slug } },
     depth: 2,
+    draft,
     limit: 1,
   });
   return docs[0] ?? null;
@@ -53,6 +57,7 @@ export default async function IndustryDetailPage({ params }: Args) {
 
   return (
     <Container className="py-20">
+      <LivePreviewRefresh />
       <span className="text-sm font-semibold uppercase tracking-widest text-gold">
         Industry
       </span>
