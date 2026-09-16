@@ -23,6 +23,16 @@ const dirname = path.dirname(filename);
 export default buildConfig({
   admin: {
     user: Users.slug,
+    meta: {
+      title: "Golden Shield Admin",
+      titleSuffix: " | Golden Shield",
+    },
+    components: {
+      graphics: {
+        Logo: "/src/components/payload/Logo.tsx#Logo",
+        Icon: "/src/components/payload/Icon.tsx#Icon",
+      },
+    },
   },
   collections: [Users, Media, Services, Products, Industries, Posts, FAQs, JobOpenings],
   editor: lexicalEditor(),

@@ -1,1 +1,24 @@
-/* Custom Payload admin panel styling overrides go here. */
+/* Golden Shield brand overrides for the Payload admin panel.
+   Unlayered rules beat Payload's own `@layer payload-default` rules
+   regardless of import order, so a plain :root block is enough. */
+:root {
+  --color-success-50: #fbf7ef;
+  --color-success-100: #f8f1e3;
+  --color-success-150: #f2e7cf;
+  --color-success-200: #ecdcb6;
+  --color-success-250: #e5d09e;
+  --color-success-300: #dfc486;
+  --color-success-350: #d8b86e;
+  --color-success-400: #d2ad56;
+  --color-success-450: #cda342;
+  --color-success-500: #c99d36;
+  --color-success-550: #b58d30;
+  --color-success-600: #a17e2b;
+  --color-success-650: #8d6e25;
+  --color-success-700: #795e20;
+  --color-success-750: #69521c;
+  --color-success-800: #594518;
+  --color-success-850: #493913;
+  --color-success-900: #382c0f;
+  --color-success-950: #281f0b;
+}
