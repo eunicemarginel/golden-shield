@@ -7,7 +7,7 @@ export function Icon() {
       alt="Golden Shield"
       width={756}
       height={598}
-      style={{ height: "28px", width: "auto" }}
+      style={{ height: "100%", width: "100%", objectFit: "contain" }}
     />
   );
 }
