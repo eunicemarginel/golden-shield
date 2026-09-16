@@ -1,7 +1,55 @@
 /* Golden Shield brand overrides for the Payload admin panel.
    Unlayered rules beat Payload's own `@layer payload-default` rules
-   regardless of import order, so a plain :root block is enough. */
+   regardless of import order, so a plain :root block is enough.
+
+   The block below restates Payload's own foundational variables
+   (normally defined in @payloadcms/ui/scss/app.scss) because our
+   production build was dropping that chunk, leaving --base, --font-body
+   and friends undefined — which broke every calc()-based spacing and
+   font-family rule across the whole admin panel. Values copied from
+   node_modules/@payloadcms/ui/dist/scss/app.scss + vars.scss so they
+   stay in sync with Payload's real defaults; only the accent color
+   below is intentionally different. */
 :root {
+  --base-px: 20;
+  --base-body-size: 13;
+  --base: calc((var(--base-px) / var(--base-body-size)) * 1rem);
+
+  --breakpoint-xs-width: 400px;
+  --breakpoint-s-width: 768px;
+  --breakpoint-m-width: 1024px;
+  --breakpoint-l-width: 1440px;
+  --scrollbar-width: 17px;
+
+  --theme-bg: var(--theme-elevation-0);
+  --theme-input-bg: var(--theme-elevation-0);
+  --theme-text: var(--theme-elevation-800);
+  --theme-overlay: rgba(5, 5, 5, 0.5);
+  --theme-baseline: 20px;
+  --theme-baseline-body-size: 13px;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Georgia", "Bitstream Charter", "Charis SIL", Utopia, "URW Bookman L", serif;
+  --font-mono: "SF Mono", Menlo, Consolas, Monaco, monospace;
+
+  --style-radius-s: 3px;
+  --style-radius-m: 4px;
+  --style-radius-l: 8px;
+
+  --z-popup: 60;
+  --z-nav: 20;
+  --z-modal: 30;
+  --z-status: 40;
+
+  --accessibility-outline: 2px solid var(--theme-text);
+  --accessibility-outline-offset: 2px;
+
+  --gutter-h: 60px;
+  --spacing-view-bottom: var(--gutter-h);
+  --doc-controls-height: calc(var(--base) * 2.8);
+  --app-header-height: calc(var(--base) * 2.8);
+  --nav-width: 275px;
+  --nav-trans-time: 150ms;
+
   --color-success-50: #fbf7ef;
   --color-success-100: #f8f1e3;
   --color-success-150: #f2e7cf;
