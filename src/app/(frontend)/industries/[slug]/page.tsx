@@ -1,0 +1,103 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { Container } from "@/components/Container";
+import { RichText } from "@/components/RichText";
+import { Card } from "@/components/Card";
+import { Button } from "@/components/Button";
+import { getPayloadClient } from "@/lib/payload";
+
+type Args = { params: Promise<{ slug: string }> };
+
+type RelatedDoc = {
+  id: number | string;
+  slug: string;
+  title: string;
+  summary: string;
+};
+
+async function getIndustry(slug: string) {
+  const payload = await getPayloadClient();
+  const { docs } = await payload.find({
+    collection: "industries",
+    where: { slug: { equals: slug } },
+    depth: 1,
+    limit: 1,
+  });
+  return docs[0] ?? null;
+}
+
+export async function generateMetadata({ params }: Args): Promise<Metadata> {
+  const { slug } = await params;
+  const industry = await getIndustry(slug);
+  if (!industry) return {};
+  return {
+    title: industry.title,
+    description: industry.summary,
+  };
+}
+
+export default async function IndustryDetailPage({ params }: Args) {
+  const { slug } = await params;
+  const industry = await getIndustry(slug);
+  if (!industry) notFound();
+
+  const relatedServices = ((industry.relatedServices ?? []) as unknown[]).filter(
+    (s): s is RelatedDoc => typeof s === "object" && s !== null,
+  );
+  const relatedProducts = ((industry.relatedProducts ?? []) as unknown[]).filter(
+    (p): p is RelatedDoc => typeof p === "object" && p !== null,
+  );
+
+  return (
+    <Container className="py-20">
+      <span className="text-sm font-semibold uppercase tracking-widest text-gold">
+        Industry
+      </span>
+      <h1 className="mt-3 max-w-3xl text-4xl font-bold tracking-tight text-foreground">
+        {industry.title}
+      </h1>
+      <p className="mt-4 max-w-2xl text-foreground-muted">{industry.summary}</p>
+
+      <div className="mt-10 grid gap-12 lg:grid-cols-3">
+        <div className="lg:col-span-2">
+          <RichText data={industry.body} />
+        </div>
+        <aside className="rounded-2xl border border-border bg-surface p-6">
+          <h2 className="text-lg font-semibold text-foreground">
+            Get a tailored proposal
+          </h2>
+          <p className="mt-2 text-sm text-foreground-muted">
+            Tell us about your site and we&apos;ll put together a security
+            programme for your sector.
+          </p>
+          <Button href="/contact-us" variant="primary" className="mt-4 w-full">
+            Request a Quote
+          </Button>
+        </aside>
+      </div>
+
+      {(relatedServices.length > 0 || relatedProducts.length > 0) && (
+        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {relatedServices.map((service) => (
+            <Card
+              key={`service-${service.id}`}
+              href={`/services/${service.slug}`}
+              eyebrow="Service"
+              title={service.title}
+              description={service.summary}
+            />
+          ))}
+          {relatedProducts.map((product) => (
+            <Card
+              key={`product-${product.id}`}
+              href={`/products/${product.slug}`}
+              eyebrow="Product"
+              title={product.title}
+              description={product.summary}
+            />
+          ))}
+        </div>
+      )}
+    </Container>
+  );
+}

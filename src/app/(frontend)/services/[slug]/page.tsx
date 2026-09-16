@@ -1,0 +1,63 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { Container } from "@/components/Container";
+import { RichText } from "@/components/RichText";
+import { Button } from "@/components/Button";
+import { getPayloadClient } from "@/lib/payload";
+
+type Args = { params: Promise<{ slug: string }> };
+
+async function getService(slug: string) {
+  const payload = await getPayloadClient();
+  const { docs } = await payload.find({
+    collection: "services",
+    where: { slug: { equals: slug }, category: { equals: "core" } },
+    limit: 1,
+  });
+  return docs[0] ?? null;
+}
+
+export async function generateMetadata({ params }: Args): Promise<Metadata> {
+  const { slug } = await params;
+  const service = await getService(slug);
+  if (!service) return {};
+  return {
+    title: service.title,
+    description: service.summary,
+  };
+}
+
+export default async function ServiceDetailPage({ params }: Args) {
+  const { slug } = await params;
+  const service = await getService(slug);
+  if (!service) notFound();
+
+  return (
+    <Container className="py-20">
+      <span className="text-sm font-semibold uppercase tracking-widest text-gold">
+        Service
+      </span>
+      <h1 className="mt-3 max-w-3xl text-4xl font-bold tracking-tight text-foreground">
+        {service.title}
+      </h1>
+      <p className="mt-4 max-w-2xl text-foreground-muted">{service.summary}</p>
+
+      <div className="mt-10 grid gap-12 lg:grid-cols-3">
+        <div className="lg:col-span-2">
+          <RichText data={service.body} />
+        </div>
+        <aside className="rounded-2xl border border-border bg-surface p-6">
+          <h2 className="text-lg font-semibold text-foreground">
+            Need this for your site?
+          </h2>
+          <p className="mt-2 text-sm text-foreground-muted">
+            Get a free, no-obligation security assessment from our team.
+          </p>
+          <Button href="/contact-us" variant="primary" className="mt-4 w-full">
+            Request a Quote
+          </Button>
+        </aside>
+      </div>
+    </Container>
+  );
+}

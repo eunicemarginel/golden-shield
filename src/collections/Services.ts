@@ -22,6 +22,20 @@ export const Services: CollectionConfig = {
     },
     slugField(),
     {
+      name: "category",
+      type: "select",
+      required: true,
+      defaultValue: "core",
+      options: [
+        { label: "Core Security Service", value: "core" },
+        { label: "Enforcement & Compliance", value: "enforcement" },
+      ],
+      admin: {
+        position: "sidebar",
+        description: "Determines whether this appears under /services or /enforcement-and-compliance.",
+      },
+    },
+    {
       name: "summary",
       type: "textarea",
       required: true,
