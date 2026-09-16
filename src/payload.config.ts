@@ -2,7 +2,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import sharp from "sharp";
 import { buildConfig } from "payload";
-import { sqliteAdapter } from "@payloadcms/db-sqlite";
+import { postgresAdapter } from "@payloadcms/db-postgres";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { seoPlugin } from "@payloadcms/plugin-seo";
 import { formBuilderPlugin } from "@payloadcms/plugin-form-builder";
@@ -29,9 +29,12 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },
-  db: sqliteAdapter({
-    client: {
-      url: process.env.DATABASE_URI || "file:./gss-website.db",
+  db: postgresAdapter({
+    pool: {
+      connectionString: process.env.DATABASE_URI,
+      ssl: process.env.DATABASE_URI?.includes("localhost")
+        ? false
+        : { rejectUnauthorized: false },
     },
   }),
   sharp,
