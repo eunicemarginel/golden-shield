@@ -13,9 +13,21 @@ export const Media: CollectionConfig = {
     {
       name: "alt",
       type: "text",
-      required: true,
       admin: {
-        description: "A short description of the photo (for accessibility and SEO), e.g. \"Security officer at building lobby\".",
+        description: "A short description of the photo (for accessibility and SEO), e.g. \"Security officer at building lobby\". Auto-filled from the filename if left blank — feel free to improve it later.",
+      },
+      hooks: {
+        beforeValidate: [
+          ({ value, data }) => {
+            if (value) return value;
+            const filename = data?.filename as string | undefined;
+            if (!filename) return value;
+            return filename
+              .replace(/\.[^.]+$/, "")
+              .replace(/[-_]+/g, " ")
+              .replace(/\b\w/g, (char: string) => char.toUpperCase());
+          },
+        ],
       },
     },
   ],
