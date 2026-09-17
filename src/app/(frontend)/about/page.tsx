@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { PhotoSlot } from "@/components/PhotoSlot";
 import { Reveal } from "@/components/Reveal";
-import { GlassPanel } from "@/components/GlassPanel";
 import { JsonLd } from "@/components/JsonLd";
 import { getPayloadClient } from "@/lib/payload";
 import { breadcrumbSchema } from "@/lib/schema";
@@ -115,28 +114,25 @@ export default async function AboutPage() {
         </div>
       </Container>
 
-      <section className="relative overflow-hidden bg-ink py-20 text-white">
-        <div className="grid-texture pointer-events-none absolute inset-0" />
-        <Container className="relative">
+      <section className="bg-ink py-20 text-white">
+        <Container>
           <Reveal>
             <h2 className="text-2xl font-bold tracking-tight">Leadership</h2>
           </Reveal>
-          <div className="mt-10 grid gap-8 sm:grid-cols-2">
+          <div className="mt-10 grid gap-10 sm:grid-cols-2">
             {leadership.map((person, index) => (
               <Reveal key={person.name} delay={index * 0.1}>
-                <GlassPanel className="h-full">
-                  <blockquote>
-                    <p className="text-lg leading-relaxed text-ink-muted">
-                      &ldquo;{person.quote}&rdquo;
-                    </p>
-                    <footer className="mt-4 text-sm font-semibold text-white">
-                      {person.name}
-                      <span className="ml-2 font-normal text-ink-muted">
-                        {person.role}
-                      </span>
-                    </footer>
-                  </blockquote>
-                </GlassPanel>
+                <blockquote>
+                  <p className="text-lg leading-relaxed text-ink-muted">
+                    &ldquo;{person.quote}&rdquo;
+                  </p>
+                  <footer className="mt-4 text-sm font-semibold text-white">
+                    {person.name}
+                    <span className="ml-2 font-normal text-ink-muted">
+                      {person.role}
+                    </span>
+                  </footer>
+                </blockquote>
               </Reveal>
             ))}
           </div>
