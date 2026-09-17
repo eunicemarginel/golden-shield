@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 const benefits = [
   "Annual wage increments for performing employees",
-  "AWS bonuses and performance bonuses for outstanding employees",
+  "Performance bonuses for outstanding employees",
   "Higher rate of pay for officers who work festive periods",
   "Reward system with vouchers for officers who receive client compliments",
   "Incentives for punctuality, performance and festive periods",

@@ -753,7 +753,7 @@ export const jobOpenings: JobOpeningSeed[] = [
       "Licensed security officers needed across residential, commercial and industrial sites island-wide. Full-time and part-time schedules available.",
     body: [
       "We're looking for PLRD-licensed security officers to join our guarding teams across Singapore, covering access control, visitor management, patrols and incident reporting at client sites.",
-      "Both full-time and part-time schedules are available. You'll be rostered to a consistent site with full relief coverage, ongoing training, and a clear path to progress into senior officer, supervisor or controller roles. Benefits include annual wage increments, performance and AWS bonuses, festive period incentives, and company-paid upgrading training.",
+      "Both full-time and part-time schedules are available. You'll be rostered to a consistent site with full relief coverage, ongoing training, and a clear path to progress into senior officer, supervisor or controller roles. Benefits include annual wage increments, performance bonuses, festive period incentives, and company-paid upgrading training.",
     ],
   },
   {
@@ -764,7 +764,7 @@ export const jobOpenings: JobOpeningSeed[] = [
       "Experienced officers to take on added responsibility on-site, mentoring junior officers and handling escalations. Full-time and part-time schedules available.",
     body: [
       "Senior Security Officers take on the same core guarding duties as our Security Officers, with added responsibility for mentoring junior officers on site and being the first point of escalation for incidents before they reach a Controller or Supervisor.",
-      "Both full-time and part-time schedules are available. Suited to officers with prior guarding experience looking to step into more responsibility, with a clear path toward Security Supervisor. Benefits include annual wage increments, performance and AWS bonuses, festive period incentives, and company-paid upgrading training.",
+      "Both full-time and part-time schedules are available. Suited to officers with prior guarding experience looking to step into more responsibility, with a clear path toward Security Supervisor. Benefits include annual wage increments, performance bonuses, festive period incentives, and company-paid upgrading training.",
     ],
   },
   {
@@ -775,7 +775,7 @@ export const jobOpenings: JobOpeningSeed[] = [
       "Oversee guarding teams across one or more sites — rostering, incident management and client liaison. Full-time and part-time schedules available.",
     body: [
       "Security Supervisors oversee day-to-day guarding operations across their assigned site(s) — managing officer rostering and relief coverage, handling incident escalations, conducting site checks, and acting as the main point of contact for the client.",
-      "Both full-time and part-time schedules are available. This role suits candidates with prior supervisory or senior officer experience in the security industry. Benefits include annual wage increments, performance and AWS bonuses, festive period incentives, and company-paid upgrading training.",
+      "Both full-time and part-time schedules are available. This role suits candidates with prior supervisory or senior officer experience in the security industry. Benefits include annual wage increments, performance bonuses, festive period incentives, and company-paid upgrading training.",
     ],
   },
   {
