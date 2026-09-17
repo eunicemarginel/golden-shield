@@ -32,7 +32,7 @@ const leadership = [
       "Our commitment to your safety and security is unwavering. We stand ready to safeguard your world, providing you with the highest level of protection and peace of mind.",
   },
   {
-    name: "Vikneswaran",
+    name: "Jason",
     role: "Operations Manager",
     quote:
       "Your safety is our paramount concern. With Golden Shield Security Services, you can trust us to provide top-notch security solutions, 24/7.",
