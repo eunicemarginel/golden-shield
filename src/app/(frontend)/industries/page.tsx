@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { Link } from "next-view-transitions";
 import { Container } from "@/components/Container";
 import { Card } from "@/components/Card";
+import { Reveal } from "@/components/Reveal";
+import { JsonLd } from "@/components/JsonLd";
 import { getPayloadClient } from "@/lib/payload";
+import { breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Industries We Protect",
@@ -20,7 +23,13 @@ export default async function IndustriesPage() {
 
   return (
     <Container className="py-20">
-      <div className="max-w-2xl">
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Industries", url: "/industries" },
+        ])}
+      />
+      <Reveal className="max-w-2xl">
         <span className="text-sm font-semibold uppercase tracking-widest text-gold">
           Industries
         </span>
@@ -32,18 +41,19 @@ export default async function IndustriesPage() {
           technology and protocols to the operational realities of your
           sector.
         </p>
-      </div>
+      </Reveal>
 
       {industries.length > 0 ? (
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {industries.map((industry) => (
-            <Card
-              key={industry.id}
-              href={`/industries/${industry.slug}`}
-              title={industry.title}
-              description={industry.summary}
-              image={industry.heroImage}
-            />
+          {industries.map((industry, index) => (
+            <Reveal key={industry.id} delay={(index % 3) * 0.1}>
+              <Card
+                href={`/industries/${industry.slug}`}
+                title={industry.title}
+                description={industry.summary}
+                image={industry.heroImage}
+              />
+            </Reveal>
           ))}
         </div>
       ) : (

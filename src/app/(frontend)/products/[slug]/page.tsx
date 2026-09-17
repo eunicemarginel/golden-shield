@@ -5,9 +5,12 @@ import { RichText } from "@/components/RichText";
 import { Button } from "@/components/Button";
 import { PhotoSlot } from "@/components/PhotoSlot";
 import { BackLink } from "@/components/BackLink";
+import { Reveal } from "@/components/Reveal";
+import { JsonLd } from "@/components/JsonLd";
 import { LivePreviewRefresh } from "@/components/payload/LivePreviewRefresh";
 import { getPayloadClient } from "@/lib/payload";
 import { isPreviewRequest } from "@/lib/preview";
+import { serviceSchema, breadcrumbSchema } from "@/lib/schema";
 
 type Args = { params: Promise<{ slug: string }> };
 
@@ -38,27 +41,46 @@ export default async function ProductDetailPage({ params }: Args) {
   const product = await getProduct(slug);
   if (!product) notFound();
 
+  const url = `/products/${product.slug}`;
+
   return (
     <Container className="py-20">
       <LivePreviewRefresh />
-      <BackLink href="/products" label="Back to Products" />
-      <span className="mt-6 block text-sm font-semibold uppercase tracking-widest text-gold">
-        Product
-      </span>
-      <h1 className="mt-3 max-w-3xl text-4xl font-bold tracking-tight text-foreground">
-        {product.title}
-      </h1>
-      <p className="mt-4 max-w-2xl text-foreground-muted">{product.summary}</p>
-
-      <PhotoSlot
-        image={product.heroImage}
-        label={`${product.title} photo`}
-        aspect="aspect-[21/9]"
-        className="mt-10"
-        sizes="(min-width: 1024px) 1024px, 100vw"
+      <JsonLd
+        data={[
+          serviceSchema({
+            name: product.title,
+            description: product.summary,
+            url,
+            image: typeof product.heroImage === "object" ? product.heroImage?.url ?? undefined : undefined,
+          }),
+          breadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: "Products", url: "/products" },
+            { name: product.title, url },
+          ]),
+        ]}
       />
+      <BackLink href="/products" label="Back to Products" />
+      <Reveal>
+        <span className="mt-6 block text-sm font-semibold uppercase tracking-widest text-gold">
+          Product
+        </span>
+        <h1 className="mt-3 max-w-3xl text-4xl font-bold tracking-tight text-foreground">
+          {product.title}
+        </h1>
+        <p className="mt-4 max-w-2xl text-foreground-muted">{product.summary}</p>
 
-      <div className="mt-10 grid gap-12 lg:grid-cols-3">
+        <PhotoSlot
+          image={product.heroImage}
+          label={`${product.title} photo`}
+          aspect="aspect-[21/9]"
+          className="mt-10"
+          sizes="(min-width: 1024px) 1024px, 100vw"
+        />
+      </Reveal>
+
+      <Reveal delay={0.1} className="mt-10 grid gap-12 lg:grid-cols-3">
         <div className="lg:col-span-2">
           <RichText data={product.body} />
         </div>
@@ -73,7 +95,7 @@ export default async function ProductDetailPage({ params }: Args) {
             Request a Quote
           </Button>
         </aside>
-      </div>
+      </Reveal>
     </Container>
   );
 }

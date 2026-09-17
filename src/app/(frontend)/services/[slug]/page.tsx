@@ -5,9 +5,12 @@ import { RichText } from "@/components/RichText";
 import { Button } from "@/components/Button";
 import { PhotoSlot } from "@/components/PhotoSlot";
 import { BackLink } from "@/components/BackLink";
+import { Reveal } from "@/components/Reveal";
+import { JsonLd } from "@/components/JsonLd";
 import { LivePreviewRefresh } from "@/components/payload/LivePreviewRefresh";
 import { getPayloadClient } from "@/lib/payload";
 import { isPreviewRequest } from "@/lib/preview";
+import { serviceSchema, breadcrumbSchema } from "@/lib/schema";
 
 type Args = { params: Promise<{ slug: string }> };
 
@@ -38,27 +41,46 @@ export default async function ServiceDetailPage({ params }: Args) {
   const service = await getService(slug);
   if (!service) notFound();
 
+  const url = `/services/${service.slug}`;
+
   return (
     <Container className="py-20">
       <LivePreviewRefresh />
-      <BackLink href="/services" label="Back to Services" />
-      <span className="mt-6 block text-sm font-semibold uppercase tracking-widest text-gold">
-        Service
-      </span>
-      <h1 className="mt-3 max-w-3xl text-4xl font-bold tracking-tight text-foreground">
-        {service.title}
-      </h1>
-      <p className="mt-4 max-w-2xl text-foreground-muted">{service.summary}</p>
-
-      <PhotoSlot
-        image={service.heroImage}
-        label={`${service.title} photo`}
-        aspect="aspect-[21/9]"
-        className="mt-10"
-        sizes="(min-width: 1024px) 1024px, 100vw"
+      <JsonLd
+        data={[
+          serviceSchema({
+            name: service.title,
+            description: service.summary,
+            url,
+            image: typeof service.heroImage === "object" ? service.heroImage?.url ?? undefined : undefined,
+          }),
+          breadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: "Services", url: "/services" },
+            { name: service.title, url },
+          ]),
+        ]}
       />
+      <BackLink href="/services" label="Back to Services" />
+      <Reveal>
+        <span className="mt-6 block text-sm font-semibold uppercase tracking-widest text-gold">
+          Service
+        </span>
+        <h1 className="mt-3 max-w-3xl text-4xl font-bold tracking-tight text-foreground">
+          {service.title}
+        </h1>
+        <p className="mt-4 max-w-2xl text-foreground-muted">{service.summary}</p>
 
-      <div className="mt-10 grid gap-12 lg:grid-cols-3">
+        <PhotoSlot
+          image={service.heroImage}
+          label={`${service.title} photo`}
+          aspect="aspect-[21/9]"
+          className="mt-10"
+          sizes="(min-width: 1024px) 1024px, 100vw"
+        />
+      </Reveal>
+
+      <Reveal delay={0.1} className="mt-10 grid gap-12 lg:grid-cols-3">
         <div className="lg:col-span-2">
           <RichText data={service.body} />
         </div>
@@ -73,7 +95,7 @@ export default async function ServiceDetailPage({ params }: Args) {
             Request a Quote
           </Button>
         </aside>
-      </div>
+      </Reveal>
     </Container>
   );
 }

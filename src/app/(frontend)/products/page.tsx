@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { Link } from "next-view-transitions";
 import { Container } from "@/components/Container";
 import { Card } from "@/components/Card";
+import { Reveal } from "@/components/Reveal";
+import { JsonLd } from "@/components/JsonLd";
 import { getPayloadClient } from "@/lib/payload";
+import { breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Products & AI Technology",
@@ -20,7 +23,13 @@ export default async function ProductsPage() {
 
   return (
     <Container className="py-20">
-      <div className="max-w-2xl">
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Products", url: "/products" },
+        ])}
+      />
+      <Reveal className="max-w-2xl">
         <span className="text-sm font-semibold uppercase tracking-widest text-gold">
           Products
         </span>
@@ -31,18 +40,19 @@ export default async function ProductsPage() {
           Surveillance, access control and analytics platforms that extend
           our guarding teams with 24/7 automated detection and monitoring.
         </p>
-      </div>
+      </Reveal>
 
       {products.length > 0 ? (
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {products.map((product) => (
-            <Card
-              key={product.id}
-              href={`/products/${product.slug}`}
-              title={product.title}
-              description={product.summary}
-              image={product.heroImage}
-            />
+          {products.map((product, index) => (
+            <Reveal key={product.id} delay={(index % 3) * 0.1}>
+              <Card
+                href={`/products/${product.slug}`}
+                title={product.title}
+                description={product.summary}
+                image={product.heroImage}
+              />
+            </Reveal>
           ))}
         </div>
       ) : (

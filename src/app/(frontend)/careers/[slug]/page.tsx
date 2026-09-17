@@ -4,7 +4,10 @@ import { Container } from "@/components/Container";
 import { RichText } from "@/components/RichText";
 import { Button } from "@/components/Button";
 import { BackLink } from "@/components/BackLink";
+import { Reveal } from "@/components/Reveal";
+import { JsonLd } from "@/components/JsonLd";
 import { getPayloadClient } from "@/lib/payload";
+import { jobPostingSchema, breadcrumbSchema } from "@/lib/schema";
 
 type Args = { params: Promise<{ slug: string }> };
 
@@ -33,18 +36,38 @@ export default async function JobDetailPage({ params }: Args) {
   const job = await getJob(slug);
   if (!job) notFound();
 
+  const url = `/careers/${job.slug}`;
+
   return (
     <Container className="py-20">
+      <JsonLd
+        data={[
+          jobPostingSchema({
+            title: job.title,
+            description: job.summary,
+            url,
+            employmentType: job.employmentType,
+            datePosted: job.createdAt,
+          }),
+          breadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: "Careers", url: "/careers" },
+            { name: job.title, url },
+          ]),
+        ]}
+      />
       <BackLink href="/careers" label="Back to Careers" />
-      <span className="mt-6 block text-sm font-semibold uppercase tracking-widest text-gold">
-        {job.employmentType?.replace("-", " ")}
-      </span>
-      <h1 className="mt-3 max-w-3xl text-4xl font-bold tracking-tight text-foreground">
-        {job.title}
-      </h1>
-      <p className="mt-4 max-w-2xl text-foreground-muted">{job.summary}</p>
+      <Reveal>
+        <span className="mt-6 block text-sm font-semibold uppercase tracking-widest text-gold">
+          {job.employmentType?.replace("-", " ")}
+        </span>
+        <h1 className="mt-3 max-w-3xl text-4xl font-bold tracking-tight text-foreground">
+          {job.title}
+        </h1>
+        <p className="mt-4 max-w-2xl text-foreground-muted">{job.summary}</p>
+      </Reveal>
 
-      <div className="mt-10 grid gap-12 lg:grid-cols-3">
+      <Reveal delay={0.1} className="mt-10 grid gap-12 lg:grid-cols-3">
         <div className="lg:col-span-2">
           <RichText data={job.body} />
         </div>
@@ -63,7 +86,7 @@ export default async function JobDetailPage({ params }: Args) {
             Apply Now
           </Button>
         </aside>
-      </div>
+      </Reveal>
     </Container>
   );
 }

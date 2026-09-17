@@ -3,7 +3,10 @@ import { Link } from "next-view-transitions";
 import { Container } from "@/components/Container";
 import { Card } from "@/components/Card";
 import { Button } from "@/components/Button";
+import { Reveal } from "@/components/Reveal";
+import { JsonLd } from "@/components/JsonLd";
 import { getPayloadClient } from "@/lib/payload";
+import { breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "AI & Digital Security Technology",
@@ -30,9 +33,16 @@ export default async function AiSecurityServicesPage() {
 
   return (
     <>
-      <section className="bg-ink py-24 text-white">
-        <Container>
-          <div className="max-w-2xl">
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "AI & Digital Security Technology", url: "/ai-security-services" },
+        ])}
+      />
+      <section className="relative overflow-hidden bg-ink py-24 text-white">
+        <div className="grid-texture pointer-events-none absolute inset-0" />
+        <Container className="relative">
+          <Reveal className="max-w-2xl">
             <span className="text-xs font-semibold uppercase tracking-[0.3em] text-gold-bright">
               AI &amp; Digital Technology
             </span>
@@ -50,23 +60,26 @@ export default async function AiSecurityServicesPage() {
                 Talk to Our Technology Team
               </Button>
             </div>
-          </div>
+          </Reveal>
         </Container>
       </section>
 
       <Container className="py-20">
-        <h2 className="text-2xl font-bold tracking-tight text-foreground">
-          Our AI-powered capabilities
-        </h2>
+        <Reveal>
+          <h2 className="text-2xl font-bold tracking-tight text-foreground">
+            Our AI-powered capabilities
+          </h2>
+        </Reveal>
         {products.length > 0 ? (
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {products.map((product) => (
-              <Card
-                key={product.id}
-                href={`/products/${product.slug}`}
-                title={product.title}
-                description={product.summary}
-              />
+            {products.map((product, index) => (
+              <Reveal key={product.id} delay={(index % 3) * 0.1}>
+                <Card
+                  href={`/products/${product.slug}`}
+                  title={product.title}
+                  description={product.summary}
+                />
+              </Reveal>
             ))}
           </div>
         ) : (

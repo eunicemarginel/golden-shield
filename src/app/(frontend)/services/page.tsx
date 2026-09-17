@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { Link } from "next-view-transitions";
 import { Container } from "@/components/Container";
 import { Card } from "@/components/Card";
+import { Reveal } from "@/components/Reveal";
+import { JsonLd } from "@/components/JsonLd";
 import { getPayloadClient } from "@/lib/payload";
+import { breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Security Services",
@@ -21,7 +24,13 @@ export default async function ServicesPage() {
 
   return (
     <Container className="py-20">
-      <div className="max-w-2xl">
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Services", url: "/services" },
+        ])}
+      />
+      <Reveal className="max-w-2xl">
         <span className="text-sm font-semibold uppercase tracking-widest text-gold">
           Services
         </span>
@@ -33,18 +42,19 @@ export default async function ServicesPage() {
           across residential, commercial, industrial and event environments
           &mdash; backed by a 24/7 command centre.
         </p>
-      </div>
+      </Reveal>
 
       {services.length > 0 ? (
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
-            <Card
-              key={service.id}
-              href={`/services/${service.slug}`}
-              title={service.title}
-              description={service.summary}
-              image={service.heroImage}
-            />
+          {services.map((service, index) => (
+            <Reveal key={service.id} delay={(index % 3) * 0.1}>
+              <Card
+                href={`/services/${service.slug}`}
+                title={service.title}
+                description={service.summary}
+                image={service.heroImage}
+              />
+            </Reveal>
           ))}
         </div>
       ) : (

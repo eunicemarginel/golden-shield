@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Link } from "next-view-transitions";
 import { Container } from "@/components/Container";
+import { Reveal } from "@/components/Reveal";
+import { JsonLd } from "@/components/JsonLd";
 import { getPayloadClient } from "@/lib/payload";
+import { breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Careers",
@@ -33,7 +36,13 @@ export default async function CareersPage() {
 
   return (
     <Container className="py-20">
-      <div className="max-w-2xl">
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Careers", url: "/careers" },
+        ])}
+      />
+      <Reveal className="max-w-2xl">
         <span className="text-sm font-semibold uppercase tracking-widest text-gold">
           Careers
         </span>
@@ -45,20 +54,19 @@ export default async function CareersPage() {
           clear pathways for growth &mdash; because our officers are the
           standard we&apos;re known for.
         </p>
-      </div>
+      </Reveal>
 
       <div className="mt-12 grid gap-6 sm:grid-cols-2">
-        {benefits.map((benefit) => (
-          <div
-            key={benefit}
-            className="rounded-xl border border-border bg-surface p-5 text-sm text-foreground-muted"
-          >
-            {benefit}
-          </div>
+        {benefits.map((benefit, index) => (
+          <Reveal key={benefit} delay={(index % 4) * 0.06}>
+            <div className="rounded-xl border border-border bg-surface p-5 text-sm text-foreground-muted">
+              {benefit}
+            </div>
+          </Reveal>
         ))}
       </div>
 
-      <div className="mt-16">
+      <Reveal delay={0.15} className="mt-16">
         <h2 className="text-2xl font-bold tracking-tight text-foreground">
           Current Openings
         </h2>
@@ -95,7 +103,7 @@ export default async function CareersPage() {
             and we&apos;ll be in touch when a role opens up.
           </p>
         )}
-      </div>
+      </Reveal>
     </Container>
   );
 }

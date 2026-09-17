@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/Container";
+import { Reveal } from "@/components/Reveal";
+import { JsonLd } from "@/components/JsonLd";
 import { getPayloadClient } from "@/lib/payload";
+import { breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "FAQ",
@@ -49,29 +52,31 @@ export default async function FaqPage() {
     <>
       <section className="bg-ink text-white">
         <Container className="py-20">
-          <span className="text-sm font-semibold uppercase tracking-widest text-gold-bright">
-            FAQ
-          </span>
-          <h1 className="mt-3 max-w-2xl text-4xl font-bold tracking-tight">
-            Frequently asked questions
-          </h1>
-          <p className="mt-4 max-w-2xl text-ink-muted">
-            Answers on licensing, guarding, technology and what to look for
-            when hiring a security partner in Singapore. Can&apos;t find what
-            you need?{" "}
-            <a href="/contact-us" className="text-gold-bright hover:underline">
-              Get in touch
-            </a>
-            .
-          </p>
+          <Reveal>
+            <span className="text-sm font-semibold uppercase tracking-widest text-gold-bright">
+              FAQ
+            </span>
+            <h1 className="mt-3 max-w-2xl text-4xl font-bold tracking-tight">
+              Frequently asked questions
+            </h1>
+            <p className="mt-4 max-w-2xl text-ink-muted">
+              Answers on licensing, guarding, technology and what to look for
+              when hiring a security partner in Singapore. Can&apos;t find what
+              you need?{" "}
+              <a href="/contact-us" className="text-gold-bright hover:underline">
+                Get in touch
+              </a>
+              .
+            </p>
+          </Reveal>
         </Container>
       </section>
 
       <Container className="py-20">
         {groups.length > 0 ? (
           <div className="space-y-16">
-            {groups.map((group) => (
-              <div key={group.category}>
+            {groups.map((group, index) => (
+              <Reveal key={group.category} delay={index * 0.08}>
                 <h2 className="text-sm font-semibold uppercase tracking-widest text-gold">
                   {group.label}
                 </h2>
@@ -104,7 +109,7 @@ export default async function FaqPage() {
                     </details>
                   ))}
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         ) : (
@@ -114,12 +119,12 @@ export default async function FaqPage() {
         )}
       </Container>
 
-      {faqs.length > 0 && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      )}
+      <JsonLd
+        data={[
+          ...(faqs.length > 0 ? [jsonLd] : []),
+          breadcrumbSchema([{ name: "Home", url: "/" }, { name: "FAQ", url: "/faq" }]),
+        ]}
+      />
     </>
   );
 }

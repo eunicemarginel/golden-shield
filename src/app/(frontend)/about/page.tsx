@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { PhotoSlot } from "@/components/PhotoSlot";
+import { Reveal } from "@/components/Reveal";
+import { JsonLd } from "@/components/JsonLd";
 import { getPayloadClient } from "@/lib/payload";
+import { breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -45,8 +48,9 @@ export default async function AboutPage() {
 
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: "Home", url: "/" }, { name: "About Us", url: "/about" }])} />
       <Container className="py-20">
-        <div className="max-w-2xl">
+        <Reveal className="max-w-2xl">
           <span className="text-sm font-semibold uppercase tracking-widest text-gold">
             About Us
           </span>
@@ -62,49 +66,54 @@ export default async function AboutPage() {
             R&amp;D team continues to develop new security technology
             locally.
           </p>
-        </div>
+        </Reveal>
 
-        <PhotoSlot
-          image={siteSettings?.aboutPhoto}
-          label="Office or team photo"
-          aspect="aspect-[21/9]"
-          className="mt-10"
-          sizes="(min-width: 1024px) 1024px, 100vw"
-        />
+        <Reveal delay={0.1}>
+          <PhotoSlot
+            image={siteSettings?.aboutPhoto}
+            label="Office or team photo"
+            aspect="aspect-[21/9]"
+            className="mt-10"
+            sizes="(min-width: 1024px) 1024px, 100vw"
+          />
+        </Reveal>
 
         <div className="mt-16 grid gap-6 sm:grid-cols-3">
-          {values.map((item) => (
-            <div
-              key={item.title}
-              className="rounded-2xl border border-border bg-surface p-6"
-            >
-              <h2 className="text-lg font-semibold text-foreground">
-                {item.title}
-              </h2>
-              <p className="mt-2 text-sm leading-relaxed text-foreground-muted">
-                {item.body}
-              </p>
-            </div>
+          {values.map((item, index) => (
+            <Reveal key={item.title} delay={index * 0.1}>
+              <div className="rounded-2xl border border-border bg-surface p-6">
+                <h2 className="text-lg font-semibold text-foreground">
+                  {item.title}
+                </h2>
+                <p className="mt-2 text-sm leading-relaxed text-foreground-muted">
+                  {item.body}
+                </p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </Container>
 
       <section className="bg-ink py-20 text-white">
         <Container>
-          <h2 className="text-2xl font-bold tracking-tight">Leadership</h2>
+          <Reveal>
+            <h2 className="text-2xl font-bold tracking-tight">Leadership</h2>
+          </Reveal>
           <div className="mt-10 grid gap-8 sm:grid-cols-2">
-            {leadership.map((person) => (
-              <blockquote key={person.name} className="border-l-2 border-gold pl-6">
-                <p className="text-lg leading-relaxed text-ink-muted">
-                  &ldquo;{person.quote}&rdquo;
-                </p>
-                <footer className="mt-4 text-sm font-semibold text-white">
-                  {person.name}
-                  <span className="ml-2 font-normal text-ink-muted">
-                    {person.role}
-                  </span>
-                </footer>
-              </blockquote>
+            {leadership.map((person, index) => (
+              <Reveal key={person.name} delay={index * 0.1}>
+                <blockquote className="border-l-2 border-gold pl-6">
+                  <p className="text-lg leading-relaxed text-ink-muted">
+                    &ldquo;{person.quote}&rdquo;
+                  </p>
+                  <footer className="mt-4 text-sm font-semibold text-white">
+                    {person.name}
+                    <span className="ml-2 font-normal text-ink-muted">
+                      {person.role}
+                    </span>
+                  </footer>
+                </blockquote>
+              </Reveal>
             ))}
           </div>
         </Container>

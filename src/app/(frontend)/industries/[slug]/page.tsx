@@ -7,9 +7,12 @@ import { Button } from "@/components/Button";
 import { PhotoSlot } from "@/components/PhotoSlot";
 import type { MediaLike } from "@/components/PhotoSlot";
 import { BackLink } from "@/components/BackLink";
+import { Reveal } from "@/components/Reveal";
+import { JsonLd } from "@/components/JsonLd";
 import { LivePreviewRefresh } from "@/components/payload/LivePreviewRefresh";
 import { getPayloadClient } from "@/lib/payload";
 import { isPreviewRequest } from "@/lib/preview";
+import { breadcrumbSchema } from "@/lib/schema";
 
 type Args = { params: Promise<{ slug: string }> };
 
@@ -56,27 +59,38 @@ export default async function IndustryDetailPage({ params }: Args) {
     (p): p is RelatedDoc => typeof p === "object" && p !== null,
   );
 
+  const url = `/industries/${industry.slug}`;
+
   return (
     <Container className="py-20">
       <LivePreviewRefresh />
-      <BackLink href="/industries" label="Back to Industries" />
-      <span className="mt-6 block text-sm font-semibold uppercase tracking-widest text-gold">
-        Industry
-      </span>
-      <h1 className="mt-3 max-w-3xl text-4xl font-bold tracking-tight text-foreground">
-        {industry.title}
-      </h1>
-      <p className="mt-4 max-w-2xl text-foreground-muted">{industry.summary}</p>
-
-      <PhotoSlot
-        image={industry.heroImage}
-        label={`${industry.title} photo`}
-        aspect="aspect-[21/9]"
-        className="mt-10"
-        sizes="(min-width: 1024px) 1024px, 100vw"
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Industries", url: "/industries" },
+          { name: industry.title, url },
+        ])}
       />
+      <BackLink href="/industries" label="Back to Industries" />
+      <Reveal>
+        <span className="mt-6 block text-sm font-semibold uppercase tracking-widest text-gold">
+          Industry
+        </span>
+        <h1 className="mt-3 max-w-3xl text-4xl font-bold tracking-tight text-foreground">
+          {industry.title}
+        </h1>
+        <p className="mt-4 max-w-2xl text-foreground-muted">{industry.summary}</p>
 
-      <div className="mt-10 grid gap-12 lg:grid-cols-3">
+        <PhotoSlot
+          image={industry.heroImage}
+          label={`${industry.title} photo`}
+          aspect="aspect-[21/9]"
+          className="mt-10"
+          sizes="(min-width: 1024px) 1024px, 100vw"
+        />
+      </Reveal>
+
+      <Reveal delay={0.1} className="mt-10 grid gap-12 lg:grid-cols-3">
         <div className="lg:col-span-2">
           <RichText data={industry.body} />
         </div>
@@ -92,29 +106,31 @@ export default async function IndustryDetailPage({ params }: Args) {
             Request a Quote
           </Button>
         </aside>
-      </div>
+      </Reveal>
 
       {(relatedServices.length > 0 || relatedProducts.length > 0) && (
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {relatedServices.map((service) => (
-            <Card
-              key={`service-${service.id}`}
-              href={`/services/${service.slug}`}
-              eyebrow="Service"
-              title={service.title}
-              description={service.summary}
-              image={service.heroImage}
-            />
+          {relatedServices.map((service, index) => (
+            <Reveal key={`service-${service.id}`} delay={index * 0.05}>
+              <Card
+                href={`/services/${service.slug}`}
+                eyebrow="Service"
+                title={service.title}
+                description={service.summary}
+                image={service.heroImage}
+              />
+            </Reveal>
           ))}
-          {relatedProducts.map((product) => (
-            <Card
-              key={`product-${product.id}`}
-              href={`/products/${product.slug}`}
-              eyebrow="Product"
-              title={product.title}
-              description={product.summary}
-              image={product.heroImage}
-            />
+          {relatedProducts.map((product, index) => (
+            <Reveal key={`product-${product.id}`} delay={index * 0.05}>
+              <Card
+                href={`/products/${product.slug}`}
+                eyebrow="Product"
+                title={product.title}
+                description={product.summary}
+                image={product.heroImage}
+              />
+            </Reveal>
           ))}
         </div>
       )}

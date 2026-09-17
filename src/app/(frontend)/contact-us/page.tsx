@@ -2,9 +2,12 @@ import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { PhotoSlot } from "@/components/PhotoSlot";
 import { ContactForm } from "@/components/ContactForm";
+import { Reveal } from "@/components/Reveal";
+import { JsonLd } from "@/components/JsonLd";
 import { companyInfo } from "@/lib/nav";
 import { getPayloadClient } from "@/lib/payload";
 import { getOrCreateContactForm } from "@/lib/getContactForm";
+import { breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -25,44 +28,49 @@ export default async function ContactPage() {
 
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Contact Us", url: "/contact-us" }])} />
       <section className="bg-ink text-white">
         <Container className="py-20">
-          <span className="text-sm font-semibold uppercase tracking-widest text-gold-bright">
-            Contact Us
-          </span>
-          <h1 className="mt-3 max-w-2xl text-4xl font-bold tracking-tight">
-            Let&apos;s talk about your security needs
-          </h1>
-          <p className="mt-4 max-w-2xl text-ink-muted">
-            Tell us about your site, event or security concern &mdash; a
-            member of our team will get back to you with a tailored
-            recommendation, not a generic quote.
-          </p>
+          <Reveal>
+            <span className="text-sm font-semibold uppercase tracking-widest text-gold-bright">
+              Contact Us
+            </span>
+            <h1 className="mt-3 max-w-2xl text-4xl font-bold tracking-tight">
+              Let&apos;s talk about your security needs
+            </h1>
+            <p className="mt-4 max-w-2xl text-ink-muted">
+              Tell us about your site, event or security concern &mdash; a
+              member of our team will get back to you with a tailored
+              recommendation, not a generic quote.
+            </p>
 
-          <dl className="mt-10 grid grid-cols-1 gap-6 border-t border-white/10 pt-8 sm:grid-cols-3">
-            {trustPoints.map((point) => (
-              <div key={point.label}>
-                <dt className="text-xs uppercase tracking-widest text-ink-muted">
-                  {point.label}
-                </dt>
-                <dd className="mt-1 font-semibold text-gold-bright">
-                  {point.value}
-                </dd>
-              </div>
-            ))}
-          </dl>
+            <dl className="mt-10 grid grid-cols-1 gap-6 border-t border-white/10 pt-8 sm:grid-cols-3">
+              {trustPoints.map((point) => (
+                <div key={point.label}>
+                  <dt className="text-xs uppercase tracking-widest text-ink-muted">
+                    {point.label}
+                  </dt>
+                  <dd className="mt-1 font-semibold text-gold-bright">
+                    {point.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
         </Container>
       </section>
 
       <Container className="py-20">
-        <PhotoSlot
-          image={siteSettings?.contactPhoto}
-          label="Team or office photo"
-          aspect="aspect-[21/9]"
-          sizes="(min-width: 1024px) 1024px, 100vw"
-        />
+        <Reveal>
+          <PhotoSlot
+            image={siteSettings?.contactPhoto}
+            label="Team or office photo"
+            aspect="aspect-[21/9]"
+            sizes="(min-width: 1024px) 1024px, 100vw"
+          />
+        </Reveal>
 
-        <div className="mt-12 grid gap-12 lg:grid-cols-2">
+        <Reveal delay={0.1} className="mt-12 grid gap-12 lg:grid-cols-2">
           <ContactForm formId={contactFormId} />
 
           <div className="rounded-2xl border border-gold/30 bg-surface p-8">
@@ -115,7 +123,7 @@ export default async function ContactPage() {
               </div>
             </dl>
           </div>
-        </div>
+        </Reveal>
       </Container>
     </>
   );

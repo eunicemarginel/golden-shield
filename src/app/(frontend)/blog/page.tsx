@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { Card } from "@/components/Card";
+import { Reveal } from "@/components/Reveal";
+import { JsonLd } from "@/components/JsonLd";
 import { getPayloadClient } from "@/lib/payload";
+import { breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Blog & Resources",
@@ -19,7 +22,13 @@ export default async function BlogPage() {
 
   return (
     <Container className="py-20">
-      <div className="max-w-2xl">
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Blog", url: "/blog" },
+        ])}
+      />
+      <Reveal className="max-w-2xl">
         <span className="text-sm font-semibold uppercase tracking-widest text-gold">
           Resources
         </span>
@@ -30,23 +39,24 @@ export default async function BlogPage() {
           Guides, explainers and updates from our security and technology
           teams.
         </p>
-      </div>
+      </Reveal>
 
       {posts.length > 0 ? (
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {posts.map((post) => (
-            <Card
-              key={post.id}
-              href={`/blog/${post.slug}`}
-              eyebrow={new Date(post.publishedDate).toLocaleDateString("en-SG", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-              title={post.title}
-              description={post.excerpt}
-              image={post.heroImage}
-            />
+          {posts.map((post, index) => (
+            <Reveal key={post.id} delay={(index % 3) * 0.1}>
+              <Card
+                href={`/blog/${post.slug}`}
+                eyebrow={new Date(post.publishedDate).toLocaleDateString("en-SG", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+                title={post.title}
+                description={post.excerpt}
+                image={post.heroImage}
+              />
+            </Reveal>
           ))}
         </div>
       ) : (
