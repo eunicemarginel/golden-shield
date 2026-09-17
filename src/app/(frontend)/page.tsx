@@ -1,7 +1,7 @@
 import { Container } from "@/components/Container";
 import { Button } from "@/components/Button";
-import { FeatureRow } from "@/components/FeatureRow";
-import { WhatWeDoShowcase } from "@/components/WhatWeDoShowcase";
+import { Card } from "@/components/Card";
+import { TiltCard } from "@/components/TiltCard";
 import { HeroVideo } from "@/components/HeroVideo";
 import { Reveal } from "@/components/Reveal";
 import { CountUp } from "@/components/CountUp";
@@ -149,13 +149,12 @@ export default async function Home() {
               business and giving you peace of mind.
             </p>
           </Reveal>
-          <div className="mt-16 hidden lg:block">
-            <WhatWeDoShowcase pillars={resolvedPillars} />
-          </div>
-          <div className="mt-16 space-y-20 lg:hidden">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {resolvedPillars.map((pillar, index) => (
-              <Reveal key={pillar.href}>
-                <FeatureRow {...pillar} reverse={index % 2 === 1} />
+              <Reveal key={pillar.href} delay={(index % 4) * 0.1}>
+                <TiltCard>
+                  <Card {...pillar} />
+                </TiltCard>
               </Reveal>
             ))}
           </div>

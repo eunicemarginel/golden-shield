@@ -24,6 +24,7 @@ export function Card({
         label={`${title} photo`}
         aspect="aspect-[16/10]"
         className="rounded-none rounded-t-2xl border-x-0 border-t-0"
+        imageClassName="transition-transform duration-500 group-hover:scale-110"
       />
       <div className="flex flex-1 flex-col p-6">
         {eyebrow && (

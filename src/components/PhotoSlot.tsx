@@ -15,12 +15,14 @@ export function PhotoSlot({
   label,
   aspect = "aspect-[4/3]",
   className = "",
+  imageClassName = "",
   sizes = "(min-width: 1024px) 400px, 100vw",
 }: {
   image?: MediaLike;
   label: string;
   aspect?: string;
   className?: string;
+  imageClassName?: string;
   sizes?: string;
 }) {
   const media = typeof image === "object" ? image : null;
@@ -33,7 +35,7 @@ export function PhotoSlot({
           alt={media.alt || label}
           fill
           sizes={sizes}
-          className="object-cover"
+          className={`object-cover ${imageClassName}`}
         />
       </div>
     );
