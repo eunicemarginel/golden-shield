@@ -86,7 +86,7 @@ export function ContactForm({ formId }: { formId: number }) {
             </label>
             <label className="block text-sm font-medium text-foreground">
               Phone
-              <input type="tel" name="phone" className={fieldClassName} />
+              <input type="tel" name="phone" required className={fieldClassName} />
             </label>
           </div>
           <label className="block text-sm font-medium text-foreground">

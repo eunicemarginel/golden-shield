@@ -209,11 +209,7 @@ export default async function Home() {
                 assessment tailored to your site or event.
               </p>
             </div>
-            <Button
-              href="/contact-us"
-              variant="primary"
-              className="transition-all duration-300 hover:shadow-[0_0_32px_4px_rgba(214,185,94,0.35)]"
-            >
+            <Button href="/contact-us" variant="secondary" className="text-white">
               Contact Us
             </Button>
           </Reveal>
