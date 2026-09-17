@@ -59,15 +59,32 @@ export default async function AboutPage() {
             <h1 className="mt-3 max-w-2xl text-4xl font-bold tracking-tight">
               The golden standard in Singapore security
             </h1>
-            <p className="mt-4 max-w-2xl text-ink-muted">
-              Founded in Singapore in 2019, Golden Shield Security Services
-              brought together a management and operations team with over a
-              decade of experience each in security, defence and law
-              enforcement. We&apos;re one of the few Singapore-based security
-              companies able to mount operations overseas, and our in-house
-              R&amp;D team continues to develop new security technology
-              locally.
-            </p>
+            <div className="mt-4 max-w-3xl space-y-4 text-ink-muted">
+              <p>
+                Founded in Singapore in 2019, Golden Shield Security Services
+                brought together a management and operations team with over a
+                decade of experience each in security, defence and law
+                enforcement.
+              </p>
+              <p>
+                We&apos;re one of the few Singapore-based security companies
+                able to mount operations overseas, supported by an
+                international team experienced in both armed and unarmed
+                deployments across a range of environments. Whether the
+                engagement is day-to-day corporate protection or a high-risk
+                assignment, we scale our approach to the operational demands
+                at hand rather than applying a single standard playbook.
+              </p>
+              <p>
+                Our in-house R&amp;D team continues to develop new security
+                technology locally, pairing experienced manpower with
+                AI-powered systems to make protection more responsive and
+                easier to monitor. Golden Shield is licensed by
+                Singapore&apos;s Police Licensing &amp; Regulatory Department
+                (PLRD) and is a member of the Security Association of
+                Singapore (SAS).
+              </p>
+            </div>
           </Reveal>
         </Container>
       </section>
