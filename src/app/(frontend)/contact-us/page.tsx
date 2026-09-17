@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { PhotoSlot } from "@/components/PhotoSlot";
 import { companyInfo } from "@/lib/nav";
+import { getPayloadClient } from "@/lib/payload";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -15,7 +16,10 @@ const trustPoints = [
   { label: "Availability", value: "24/7 Command Centre" },
 ];
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const payload = await getPayloadClient();
+  const siteSettings = await payload.findGlobal({ slug: "site-settings" });
+
   return (
     <>
       <section className="bg-ink text-white">
@@ -49,7 +53,7 @@ export default function ContactPage() {
 
       <Container className="py-20">
         <PhotoSlot
-          image={undefined}
+          image={siteSettings?.contactPhoto}
           label="Team or office photo"
           aspect="aspect-[21/9]"
           sizes="(min-width: 1024px) 1024px, 100vw"

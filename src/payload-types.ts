@@ -1103,6 +1103,10 @@ export interface SiteSetting {
    * Upload photo as about-team.jpg in Media, then pick it here.
    */
   aboutPhoto?: (number | null) | Media;
+  /**
+   * Upload photo as contact-team.jpg in Media, then pick it here.
+   */
+  contactPhoto?: (number | null) | Media;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1116,6 +1120,7 @@ export interface SiteSettingsSelect<T extends boolean = true> {
   homeIndustriesImage?: T;
   homeEnforcementImage?: T;
   aboutPhoto?: T;
+  contactPhoto?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

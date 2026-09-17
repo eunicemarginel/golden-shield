@@ -55,5 +55,14 @@ export const SiteSettings: GlobalConfig = {
         description: "Upload photo as about-team.jpg in Media, then pick it here.",
       },
     },
+    {
+      name: "contactPhoto",
+      type: "upload",
+      relationTo: "media",
+      label: "Contact page — team/office photo",
+      admin: {
+        description: "Upload photo as contact-team.jpg in Media, then pick it here.",
+      },
+    },
   ],
 };
