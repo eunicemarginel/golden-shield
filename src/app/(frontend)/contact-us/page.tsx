@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { PhotoSlot } from "@/components/PhotoSlot";
+import { ContactForm } from "@/components/ContactForm";
 import { companyInfo } from "@/lib/nav";
 import { getPayloadClient } from "@/lib/payload";
+import { getOrCreateContactForm } from "@/lib/getContactForm";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -19,6 +21,7 @@ const trustPoints = [
 export default async function ContactPage() {
   const payload = await getPayloadClient();
   const siteSettings = await payload.findGlobal({ slug: "site-settings" });
+  const contactFormId = await getOrCreateContactForm();
 
   return (
     <>
@@ -60,61 +63,7 @@ export default async function ContactPage() {
         />
 
         <div className="mt-12 grid gap-12 lg:grid-cols-2">
-          <form className="space-y-5">
-            <div className="grid gap-5 sm:grid-cols-2">
-              <label className="block text-sm font-medium text-foreground">
-                Name
-                <input
-                  type="text"
-                  name="name"
-                  required
-                  className="mt-1.5 w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm text-foreground outline-none focus:border-gold"
-                />
-              </label>
-              <label className="block text-sm font-medium text-foreground">
-                Company
-                <input
-                  type="text"
-                  name="company"
-                  className="mt-1.5 w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm text-foreground outline-none focus:border-gold"
-                />
-              </label>
-            </div>
-            <div className="grid gap-5 sm:grid-cols-2">
-              <label className="block text-sm font-medium text-foreground">
-                Email
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  className="mt-1.5 w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm text-foreground outline-none focus:border-gold"
-                />
-              </label>
-              <label className="block text-sm font-medium text-foreground">
-                Phone
-                <input
-                  type="tel"
-                  name="phone"
-                  className="mt-1.5 w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm text-foreground outline-none focus:border-gold"
-                />
-              </label>
-            </div>
-            <label className="block text-sm font-medium text-foreground">
-              How can we help?
-              <textarea
-                name="message"
-                rows={5}
-                required
-                className="mt-1.5 w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm text-foreground outline-none focus:border-gold"
-              />
-            </label>
-            <button
-              type="submit"
-              className="w-full rounded-full bg-gold px-6 py-3 text-sm font-semibold text-gold-foreground transition-colors hover:bg-gold-bright sm:w-auto"
-            >
-              Send Enquiry
-            </button>
-          </form>
+          <ContactForm formId={contactFormId} />
 
           <div className="rounded-2xl border border-gold/30 bg-surface p-8">
             <h2 className="text-lg font-semibold text-foreground">
