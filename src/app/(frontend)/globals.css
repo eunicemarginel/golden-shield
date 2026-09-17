@@ -10,6 +10,8 @@
 
   --ink: #0d0f14;
   --ink-muted: #b7b9c3;
+  --ink-surface: #15181f;
+  --ink-border: rgba(255, 255, 255, 0.08);
 
   --gold: #d6b95e;
   --gold-bright: #e8cf82;
@@ -26,6 +28,8 @@
 
   --color-ink: var(--ink);
   --color-ink-muted: var(--ink-muted);
+  --color-ink-surface: var(--ink-surface);
+  --color-ink-border: var(--ink-border);
 
   --color-gold: var(--gold);
   --color-gold-bright: var(--gold-bright);
@@ -39,6 +43,13 @@
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+.grid-texture {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

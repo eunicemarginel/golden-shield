@@ -22,6 +22,7 @@
     "@payloadcms/richtext-lexical": "^3.89.0",
     "@payloadcms/storage-vercel-blob": "^3.89.0",
     "graphql": "^16.14.2",
+    "motion": "^13.4.0",
     "next": "16.3.5",
     "next-view-transitions": "^0.3.5",
     "payload": "^3.89.0",
