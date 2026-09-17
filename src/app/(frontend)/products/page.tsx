@@ -22,26 +22,32 @@ export default async function ProductsPage() {
   });
 
   return (
-    <Container className="py-20">
+    <>
       <JsonLd
         data={breadcrumbSchema([
           { name: "Home", url: "/" },
           { name: "Products", url: "/products" },
         ])}
       />
-      <Reveal className="max-w-2xl">
-        <span className="text-sm font-semibold uppercase tracking-widest text-gold">
-          Products
-        </span>
-        <h1 className="mt-3 text-4xl font-bold tracking-tight text-foreground">
-          AI-powered security technology
-        </h1>
-        <p className="mt-4 text-foreground-muted">
-          Surveillance, access control and analytics platforms that extend
-          our guarding teams with 24/7 automated detection and monitoring.
-        </p>
-      </Reveal>
+      <section className="relative overflow-hidden bg-ink text-white">
+        <div className="grid-texture pointer-events-none absolute inset-0" />
+        <Container className="relative py-20">
+          <Reveal>
+            <span className="text-sm font-semibold uppercase tracking-widest text-gold-bright">
+              Products
+            </span>
+            <h1 className="mt-3 max-w-2xl text-4xl font-bold tracking-tight">
+              AI-powered security technology
+            </h1>
+            <p className="mt-4 max-w-2xl text-ink-muted">
+              Surveillance, access control and analytics platforms that extend
+              our guarding teams with 24/7 automated detection and monitoring.
+            </p>
+          </Reveal>
+        </Container>
+      </section>
 
+      <Container className="py-20">
       {products.length > 0 ? (
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {products.map((product, index) => (
@@ -64,6 +70,7 @@ export default async function ProductsPage() {
           for immediate assistance.
         </p>
       )}
-    </Container>
+      </Container>
+    </>
   );
 }

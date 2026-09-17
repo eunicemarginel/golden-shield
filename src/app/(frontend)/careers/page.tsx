@@ -35,28 +35,34 @@ export default async function CareersPage() {
   });
 
   return (
-    <Container className="py-20">
+    <>
       <JsonLd
         data={breadcrumbSchema([
           { name: "Home", url: "/" },
           { name: "Careers", url: "/careers" },
         ])}
       />
-      <Reveal className="max-w-2xl">
-        <span className="text-sm font-semibold uppercase tracking-widest text-gold">
-          Careers
-        </span>
-        <h1 className="mt-3 text-4xl font-bold tracking-tight text-foreground">
-          Build your security career with us
-        </h1>
-        <p className="mt-4 text-foreground-muted">
-          We invest in our people with ongoing training, recognition and
-          clear pathways for growth &mdash; because our officers are the
-          standard we&apos;re known for.
-        </p>
-      </Reveal>
+      <section className="relative overflow-hidden bg-ink text-white">
+        <div className="grid-texture pointer-events-none absolute inset-0" />
+        <Container className="relative py-20">
+          <Reveal>
+            <span className="text-sm font-semibold uppercase tracking-widest text-gold-bright">
+              Careers
+            </span>
+            <h1 className="mt-3 max-w-2xl text-4xl font-bold tracking-tight">
+              Build your security career with us
+            </h1>
+            <p className="mt-4 max-w-2xl text-ink-muted">
+              We invest in our people with ongoing training, recognition and
+              clear pathways for growth &mdash; because our officers are the
+              standard we&apos;re known for.
+            </p>
+          </Reveal>
+        </Container>
+      </section>
 
-      <div className="mt-12 grid gap-6 sm:grid-cols-2">
+      <Container className="py-20">
+      <div className="grid gap-6 sm:grid-cols-2">
         {benefits.map((benefit, index) => (
           <Reveal key={benefit} delay={(index % 4) * 0.06}>
             <div className="rounded-xl border border-border bg-surface p-5 text-sm text-foreground-muted">
@@ -104,6 +110,7 @@ export default async function CareersPage() {
           </p>
         )}
       </Reveal>
-    </Container>
+      </Container>
+    </>
   );
 }

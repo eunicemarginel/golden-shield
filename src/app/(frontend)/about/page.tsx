@@ -49,25 +49,30 @@ export default async function AboutPage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema([{ name: "Home", url: "/" }, { name: "About Us", url: "/about" }])} />
-      <Container className="py-20">
-        <Reveal className="max-w-2xl">
-          <span className="text-sm font-semibold uppercase tracking-widest text-gold">
-            About Us
-          </span>
-          <h1 className="mt-3 text-4xl font-bold tracking-tight text-foreground">
-            The golden standard in Singapore security
-          </h1>
-          <p className="mt-4 text-foreground-muted">
-            Founded in Singapore in 2019, Golden Shield Security Services
-            brought together a management and operations team with over a
-            decade of experience each in security, defence and law
-            enforcement. We&apos;re one of the few Singapore-based security
-            companies able to mount operations overseas, and our in-house
-            R&amp;D team continues to develop new security technology
-            locally.
-          </p>
-        </Reveal>
+      <section className="relative overflow-hidden bg-ink text-white">
+        <div className="grid-texture pointer-events-none absolute inset-0" />
+        <Container className="relative py-20">
+          <Reveal>
+            <span className="text-sm font-semibold uppercase tracking-widest text-gold-bright">
+              About Us
+            </span>
+            <h1 className="mt-3 max-w-2xl text-4xl font-bold tracking-tight">
+              The golden standard in Singapore security
+            </h1>
+            <p className="mt-4 max-w-2xl text-ink-muted">
+              Founded in Singapore in 2019, Golden Shield Security Services
+              brought together a management and operations team with over a
+              decade of experience each in security, defence and law
+              enforcement. We&apos;re one of the few Singapore-based security
+              companies able to mount operations overseas, and our in-house
+              R&amp;D team continues to develop new security technology
+              locally.
+            </p>
+          </Reveal>
+        </Container>
+      </section>
 
+      <Container className="py-20">
         <Reveal delay={0.1}>
           <PhotoSlot
             image={siteSettings?.aboutPhoto}
@@ -94,8 +99,9 @@ export default async function AboutPage() {
         </div>
       </Container>
 
-      <section className="bg-ink py-20 text-white">
-        <Container>
+      <section className="relative overflow-hidden bg-ink py-20 text-white">
+        <div className="grid-texture pointer-events-none absolute inset-0" />
+        <Container className="relative">
           <Reveal>
             <h2 className="text-2xl font-bold tracking-tight">Leadership</h2>
           </Reveal>

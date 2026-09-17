@@ -23,27 +23,33 @@ export default async function EnforcementPage() {
   });
 
   return (
-    <Container className="py-20">
+    <>
       <JsonLd
         data={breadcrumbSchema([
           { name: "Home", url: "/" },
           { name: "Enforcement & Compliance", url: "/enforcement-and-compliance" },
         ])}
       />
-      <Reveal className="max-w-2xl">
-        <span className="text-sm font-semibold uppercase tracking-widest text-gold">
-          Enforcement &amp; Compliance
-        </span>
-        <h1 className="mt-3 text-4xl font-bold tracking-tight text-foreground">
-          Assurance beyond the guard post
-        </h1>
-        <p className="mt-4 text-foreground-muted">
-          From security risk audits to private investigation and red-teaming
-          exercises, our enforcement and compliance services help
-          organisations verify and strengthen their security posture.
-        </p>
-      </Reveal>
+      <section className="relative overflow-hidden bg-ink text-white">
+        <div className="grid-texture pointer-events-none absolute inset-0" />
+        <Container className="relative py-20">
+          <Reveal>
+            <span className="text-sm font-semibold uppercase tracking-widest text-gold-bright">
+              Enforcement &amp; Compliance
+            </span>
+            <h1 className="mt-3 max-w-2xl text-4xl font-bold tracking-tight">
+              Assurance beyond the guard post
+            </h1>
+            <p className="mt-4 max-w-2xl text-ink-muted">
+              From security risk audits to private investigation and red-teaming
+              exercises, our enforcement and compliance services help
+              organisations verify and strengthen their security posture.
+            </p>
+          </Reveal>
+        </Container>
+      </section>
 
+      <Container className="py-20">
       {services.length > 0 ? (
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
@@ -66,6 +72,7 @@ export default async function EnforcementPage() {
           for immediate assistance.
         </p>
       )}
-    </Container>
+      </Container>
+    </>
   );
 }

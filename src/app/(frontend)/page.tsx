@@ -1,6 +1,6 @@
 import { Container } from "@/components/Container";
 import { Button } from "@/components/Button";
-import { Card } from "@/components/Card";
+import { FeatureRow } from "@/components/FeatureRow";
 import { HeroVideo } from "@/components/HeroVideo";
 import { Reveal } from "@/components/Reveal";
 import { CountUp } from "@/components/CountUp";
@@ -144,17 +144,13 @@ export default async function Home() {
               business and giving you peace of mind.
             </p>
           </Reveal>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-16 space-y-20">
             {pillars.map(({ imageKey, ...pillar }, index) => (
-              <Reveal
-                key={pillar.href}
-                delay={index * 0.1}
-                className={index === 0 ? "sm:col-span-2 sm:row-span-2" : ""}
-              >
-                <Card
+              <Reveal key={pillar.href}>
+                <FeatureRow
                   {...pillar}
                   image={siteSettings?.[imageKey]}
-                  size={index === 0 ? "lg" : "sm"}
+                  reverse={index % 2 === 1}
                 />
               </Reveal>
             ))}

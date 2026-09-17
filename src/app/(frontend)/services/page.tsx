@@ -23,27 +23,33 @@ export default async function ServicesPage() {
   });
 
   return (
-    <Container className="py-20">
+    <>
       <JsonLd
         data={breadcrumbSchema([
           { name: "Home", url: "/" },
           { name: "Services", url: "/services" },
         ])}
       />
-      <Reveal className="max-w-2xl">
-        <span className="text-sm font-semibold uppercase tracking-widest text-gold">
-          Services
-        </span>
-        <h1 className="mt-3 text-4xl font-bold tracking-tight text-foreground">
-          Security services built for every site
-        </h1>
-        <p className="mt-4 text-foreground-muted">
-          Licensed, trained and disciplined security officers deployed
-          across residential, commercial, industrial and event environments
-          &mdash; backed by a 24/7 command centre.
-        </p>
-      </Reveal>
+      <section className="relative overflow-hidden bg-ink text-white">
+        <div className="grid-texture pointer-events-none absolute inset-0" />
+        <Container className="relative py-20">
+          <Reveal>
+            <span className="text-sm font-semibold uppercase tracking-widest text-gold-bright">
+              Services
+            </span>
+            <h1 className="mt-3 max-w-2xl text-4xl font-bold tracking-tight">
+              Security services built for every site
+            </h1>
+            <p className="mt-4 max-w-2xl text-ink-muted">
+              Licensed, trained and disciplined security officers deployed
+              across residential, commercial, industrial and event environments
+              &mdash; backed by a 24/7 command centre.
+            </p>
+          </Reveal>
+        </Container>
+      </section>
 
+      <Container className="py-20">
       {services.length > 0 ? (
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
@@ -66,6 +72,7 @@ export default async function ServicesPage() {
           for immediate assistance.
         </p>
       )}
-    </Container>
+      </Container>
+    </>
   );
 }

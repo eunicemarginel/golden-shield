@@ -22,27 +22,33 @@ export default async function IndustriesPage() {
   });
 
   return (
-    <Container className="py-20">
+    <>
       <JsonLd
         data={breadcrumbSchema([
           { name: "Home", url: "/" },
           { name: "Industries", url: "/industries" },
         ])}
       />
-      <Reveal className="max-w-2xl">
-        <span className="text-sm font-semibold uppercase tracking-widest text-gold">
-          Industries
-        </span>
-        <h1 className="mt-3 text-4xl font-bold tracking-tight text-foreground">
-          Security programmes built for your sector
-        </h1>
-        <p className="mt-4 text-foreground-muted">
-          Every industry faces different risks. We tailor manpower,
-          technology and protocols to the operational realities of your
-          sector.
-        </p>
-      </Reveal>
+      <section className="relative overflow-hidden bg-ink text-white">
+        <div className="grid-texture pointer-events-none absolute inset-0" />
+        <Container className="relative py-20">
+          <Reveal>
+            <span className="text-sm font-semibold uppercase tracking-widest text-gold-bright">
+              Industries
+            </span>
+            <h1 className="mt-3 max-w-2xl text-4xl font-bold tracking-tight">
+              Security programmes built for your sector
+            </h1>
+            <p className="mt-4 max-w-2xl text-ink-muted">
+              Every industry faces different risks. We tailor manpower,
+              technology and protocols to the operational realities of your
+              sector.
+            </p>
+          </Reveal>
+        </Container>
+      </section>
 
+      <Container className="py-20">
       {industries.length > 0 ? (
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {industries.map((industry, index) => (
@@ -65,6 +71,7 @@ export default async function IndustriesPage() {
           for immediate assistance.
         </p>
       )}
-    </Container>
+      </Container>
+    </>
   );
 }

@@ -21,26 +21,32 @@ export default async function BlogPage() {
   });
 
   return (
-    <Container className="py-20">
+    <>
       <JsonLd
         data={breadcrumbSchema([
           { name: "Home", url: "/" },
           { name: "Blog", url: "/blog" },
         ])}
       />
-      <Reveal className="max-w-2xl">
-        <span className="text-sm font-semibold uppercase tracking-widest text-gold">
-          Resources
-        </span>
-        <h1 className="mt-3 text-4xl font-bold tracking-tight text-foreground">
-          Insights on security &amp; compliance
-        </h1>
-        <p className="mt-4 text-foreground-muted">
-          Guides, explainers and updates from our security and technology
-          teams.
-        </p>
-      </Reveal>
+      <section className="relative overflow-hidden bg-ink text-white">
+        <div className="grid-texture pointer-events-none absolute inset-0" />
+        <Container className="relative py-20">
+          <Reveal>
+            <span className="text-sm font-semibold uppercase tracking-widest text-gold-bright">
+              Resources
+            </span>
+            <h1 className="mt-3 max-w-2xl text-4xl font-bold tracking-tight">
+              Insights on security &amp; compliance
+            </h1>
+            <p className="mt-4 max-w-2xl text-ink-muted">
+              Guides, explainers and updates from our security and technology
+              teams.
+            </p>
+          </Reveal>
+        </Container>
+      </section>
 
+      <Container className="py-20">
       {posts.length > 0 ? (
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {posts.map((post, index) => (
@@ -64,6 +70,7 @@ export default async function BlogPage() {
           Our first articles are coming soon.
         </p>
       )}
-    </Container>
+      </Container>
+    </>
   );
 }

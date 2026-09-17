@@ -19,6 +19,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
+      <div className="h-[2px] w-full bg-gradient-to-r from-gold-dark via-gold-bright to-gold-dark" />
       <div className="mx-auto flex h-20 w-full max-w-[1440px] items-center justify-between px-6 lg:px-10">
         <Link href="/" className="flex shrink-0 items-center">
           <Image
@@ -37,13 +38,18 @@ export function Header() {
               key={item.href}
               href={item.href}
               aria-current={isActivePath(pathname, item.href) ? "page" : undefined}
-              className={`text-sm whitespace-nowrap transition-colors ${
+              className={`group relative py-1 text-sm whitespace-nowrap transition-colors ${
                 isActivePath(pathname, item.href)
                   ? "font-semibold text-gold"
                   : "font-medium text-foreground-muted hover:text-foreground"
               }`}
             >
               {item.label}
+              <span
+                className={`absolute -bottom-0.5 left-0 h-[1.5px] w-full origin-left scale-x-0 bg-gold transition-transform duration-200 group-hover:scale-x-100 ${
+                  isActivePath(pathname, item.href) ? "scale-x-100" : ""
+                }`}
+              />
             </Link>
           ))}
         </nav>

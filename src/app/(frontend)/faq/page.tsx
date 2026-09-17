@@ -50,8 +50,9 @@ export default async function FaqPage() {
 
   return (
     <>
-      <section className="bg-ink text-white">
-        <Container className="py-20">
+      <section className="relative overflow-hidden bg-ink text-white">
+        <div className="grid-texture pointer-events-none absolute inset-0" />
+        <Container className="relative py-20">
           <Reveal>
             <span className="text-sm font-semibold uppercase tracking-widest text-gold-bright">
               FAQ
