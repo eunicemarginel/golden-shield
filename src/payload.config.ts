@@ -7,6 +7,7 @@ import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { seoPlugin } from "@payloadcms/plugin-seo";
 import { formBuilderPlugin } from "@payloadcms/plugin-form-builder";
 import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
+import { resendAdapter } from "@payloadcms/email-resend";
 
 import { Users } from "@/collections/Users";
 import { Media } from "@/collections/Media";
@@ -42,6 +43,13 @@ export default buildConfig({
   globals: [SiteSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
+  email: process.env.RESEND_API_KEY
+    ? resendAdapter({
+        defaultFromAddress: process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev",
+        defaultFromName: "Golden Shield Security Services",
+        apiKey: process.env.RESEND_API_KEY,
+      })
+    : undefined,
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },
