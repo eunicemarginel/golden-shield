@@ -25,6 +25,9 @@ export const secondaryNav: NavGroup[] = [
 export const companyInfo = {
   name: "Golden Shield Security Services",
   phone: "+65 8243 0205",
+  // Defaults to the main phone number; update if WhatsApp enquiries should
+  // go to a different line. Digits only, with country code, no spaces/plus.
+  whatsappNumber: "6582430205",
   email: "info@golden-shield.com.sg",
   address: "20 Sin Ming Lane #04-67, Singapore 573968",
 };
