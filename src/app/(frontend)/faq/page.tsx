@@ -75,7 +75,7 @@ export default async function FaqPage() {
                 <h2 className="text-sm font-semibold uppercase tracking-widest text-gold">
                   {group.label}
                 </h2>
-                <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                <div className="mt-6 grid items-start gap-4 sm:grid-cols-2">
                   {group.items.map((faq) => (
                     <details
                       key={faq.id}
