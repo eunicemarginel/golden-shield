@@ -89,7 +89,7 @@ export function Header() {
 
         <div className="hidden shrink-0 lg:block">
           <Button href="/contact-us" variant="primary">
-            Get a Free Assessment
+            Free Security Assessment
           </Button>
         </div>
 
@@ -128,7 +128,7 @@ export function Header() {
               </Link>
             ))}
             <Button href="/contact-us" variant="primary" className="mt-2">
-              Get a Free Assessment
+              Free Security Assessment
             </Button>
           </Container>
         </div>
