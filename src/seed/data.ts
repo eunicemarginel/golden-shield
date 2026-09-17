@@ -497,241 +497,241 @@ export const faqs: {
   {
     question: "Which is the best security company in Singapore?",
     answer:
-      "Selection depends on protection type, property, industry, budget, and whether manpower or technology is needed. Evaluate licensing, experience, officer quality, supervision, response procedures, technology capabilities, and customisation ability.",
+      "There's no single \"best\" security company — the right fit depends on your property type, industry, budget, and whether you need manpower, technology, or both. What separates a strong provider from an average one is proper licensing, an experienced management team, well-trained and well-supervised officers, clear response procedures, and the flexibility to build a solution around your site rather than sell a one-size-fits-all package.",
     category: "general",
   },
   {
     question: "How do I choose a good security company in Singapore?",
     answer:
-      "Consider proper licensing, management experience, officer training and professionalism, site supervision procedures, 24/7 support availability, CCTV and access control capabilities, and customisation flexibility. Golden Shield combines trained personnel, operational planning, and modern technology.",
+      "Start with the fundamentals: proper PLRD licensing, an experienced management team, and officers who are genuinely trained and supervised on site, not just deployed and forgotten. From there, look at what backs up the manpower — 24/7 support, CCTV and access control capability, and a willingness to customise the solution to your site rather than offer a standard package. Golden Shield builds every engagement around this combination of trained personnel, careful operational planning, and modern technology.",
     category: "general",
   },
   {
     question: "What services does a security company provide?",
     answer:
-      "Services include security guards, patrols, condominium security, commercial building security, industrial security, construction site security, event security, crowd control, traffic management, concierge security, retail loss prevention, executive protection, access control, CCTV surveillance, remote monitoring, and security technology solutions.",
+      "A full-service security company typically covers guarding and patrols across condominiums, commercial buildings, industrial sites and construction projects, alongside event security, crowd control and traffic management. Many also offer concierge services, retail loss prevention, executive protection, and technology-driven solutions like access control, CCTV surveillance and remote monitoring — Golden Shield provides all of the above under one roof.",
     category: "services",
   },
   {
     question: "How much does it cost to hire a security guard in Singapore?",
     answer:
-      "Costs vary based on number of officers, operating hours, qualifications, site responsibilities, deployment duration, and 24-hour coverage needs. Additional requirements like patrols, access control, command centre monitoring, or security technology affect overall costs. Golden Shield provides customised quotations.",
+      "Pricing depends on how many officers you need, your operating hours, the qualifications required for the role, and how long the deployment runs — round-the-clock coverage naturally costs more than a single shift. Add-ons like patrol rounds, access control, command centre monitoring or other technology will also affect the total. Because every site is different, we provide a customised quotation rather than a flat rate.",
     category: "general",
   },
   {
     question: "Are security companies in Singapore required to be licensed?",
     answer:
-      "Yes. Security agencies operating in Singapore are regulated and must meet the applicable licensing requirements. Golden Shield is licensed by Singapore's Police Licensing & Regulatory Department (PLRD).",
+      "Yes — security agencies operating in Singapore are regulated and must hold a valid licence to operate legally. Golden Shield is licensed by Singapore's Police Licensing & Regulatory Department (PLRD), and every officer we deploy is certified to the appropriate rank for their role.",
     category: "general",
   },
   {
     question: "What does a security officer do?",
     answer:
-      "Officers protect people, property, and assets by monitoring premises and responding to security issues. Responsibilities may include access control, visitor management, patrols, CCTV monitoring, incident reporting, emergency response, crowd management, entrance/exit checks, and deterring unauthorised activity.",
+      "A security officer's core job is protecting people, property and assets by staying alert on the ground and responding quickly when something's wrong. Day to day, that can mean access control and visitor management, patrols, CCTV monitoring, incident reporting, emergency response, crowd management, and simply being a visible deterrent against unauthorised activity.",
     category: "general",
   },
   {
     question: "What is 24/7 security guarding?",
     answer:
-      "24/7 security guarding provides continuous security coverage throughout the day and night. Officers operate in shifts ensuring premises remain monitored. Commonly used for condominiums, commercial buildings, industrial facilities, construction sites, and locations requiring constant protection.",
+      "24/7 security guarding means continuous coverage around the clock, with officers rotating through shifts so the site is never left unmonitored. It's the standard for condominiums, commercial buildings, industrial facilities, construction sites, and any location where a gap in coverage — even overnight — is a real risk.",
     category: "services",
   },
   {
     question: "Do condominiums need security guards in Singapore?",
     answer:
-      "Many condominiums employ security officers for access management, visitor control, contractor verification, and deliveries. Security may include CCTV monitoring, visitor management, vehicle access control, patrols, intercom systems, remote gate management, and incident response.",
+      "Most condominiums in Singapore do employ security officers, and for good reason — managing visitor access, verifying contractors, handling deliveries and controlling vehicle entry all benefit from a trained officer on site rather than an unmanned system alone. This is usually paired with supporting technology: CCTV, intercoms, remote gate management and a clear incident response process.",
     category: "services",
   },
   {
     question: "What security services are suitable for commercial buildings?",
     answer:
-      "Suitable services include security officers, lobby/concierge security, access control, CCTV monitoring, visitor management, patrols, emergency response, vehicle access management, and remote monitoring. Appropriate solutions depend on building size, occupancy, operating hours, and risk profile.",
+      "Commercial buildings typically need a mix of static guarding, lobby or concierge security, access control and CCTV monitoring, backed by clear visitor management and emergency response procedures. The right combination depends on the building's size, occupancy, operating hours and risk profile — a 24-hour office tower has different needs from a single-tenant warehouse office.",
     category: "services",
   },
   {
     question: "What security is required for industrial facilities?",
     answer:
-      "Industrial properties often require stronger perimeter and access controls due to valuable equipment, inventory, and machinery. Solutions include manned guarding, perimeter patrols, CCTV, vehicle monitoring, access control, visitor/contractor management, alarm monitoring, and remote surveillance.",
+      "Industrial sites carry valuable equipment, inventory and machinery, which usually calls for stronger perimeter and access control than a typical commercial building. That often means manned guarding combined with perimeter patrols, CCTV, vehicle monitoring, visitor and contractor management, alarm monitoring and remote surveillance working together rather than any one measure alone.",
     category: "services",
   },
   {
     question: "Do construction sites need security guards?",
     answer:
-      "Security guards prevent unauthorised entry, theft, vandalism, and hazardous area access. Construction security may include entry/exit control, contractor verification, vehicle monitoring, night patrols, CCTV surveillance, and equipment/material protection. Combined guarding and surveillance provide stronger coverage.",
+      "Yes — construction sites are a common target for theft, vandalism and unauthorised entry into hazardous areas, and a security presence significantly reduces that risk. Typical coverage includes entry and exit control, contractor verification, vehicle monitoring, night patrols, CCTV surveillance and protection for equipment and materials, often combining physical guarding with surveillance technology for stronger coverage.",
     category: "services",
   },
   {
     question: "What is mobile security patrol?",
     answer:
-      "Mobile security patrol involves trained security personnel conducting scheduled or random inspections of a property. Officers check building perimeters, entrances, exits, restricted areas, gates, car parks, equipment, and signs of trespassing or suspicious activity.",
+      "Mobile security patrol involves trained officers conducting scheduled or randomised inspection rounds across a property, rather than being stationed at one fixed point. Patrols typically cover building perimeters, entrances and exits, restricted areas, gates, car parks and equipment — checking for signs of trespassing, tampering or other suspicious activity along the way.",
     category: "services",
   },
   {
     question: "What is the difference between security guards and mobile patrols?",
     answer:
-      "A security guard is normally stationed at a specific location for an assigned period, while a mobile patrol team visits and checks locations according to scheduled or random patrol routes. Some organisations use both approaches for permanent presence and wider coverage.",
+      "A security guard is stationed at a specific location for their assigned shift, providing a constant, visible presence at that point. A mobile patrol team instead moves between multiple locations on a scheduled or randomised route, extending coverage across a wider area. Many sites use both together — a fixed presence where it matters most, and patrols to cover everything in between.",
     category: "services",
   },
   {
     question: "What is event security?",
     answer:
-      "Event security involves planning and deploying trained personnel to help protect guests, staff, performers, organisers and property during an event. Services include access control, crowd management, queue management, VIP protection, traffic management, emergency coordination, and restricted-area protection.",
+      "Event security is the planning and on-the-ground deployment of trained personnel to protect guests, staff, performers, organisers and property throughout an event. It typically covers access control, crowd and queue management, VIP protection, traffic management, emergency coordination and protecting restricted areas — planned around the specific layout and schedule of the event.",
     category: "services",
   },
   {
     question: "When should I hire security for an event?",
     answer:
-      "Event security applies to corporate functions, exhibitions, conferences, concerts, private functions, and large gatherings requiring crowd management or controlled access. Early planning enables determination of entrances, restricted areas, emergency routes, officer deployment, and crowd-control requirements.",
+      "Event security applies to corporate functions, exhibitions, conferences, concerts, private functions and any large gathering that needs crowd management or controlled access. The earlier you plan, the better — deciding on entrances, restricted areas, emergency routes, officer numbers and crowd-control measures well ahead of the date avoids scrambling to fix gaps at the last minute.",
     category: "services",
   },
   {
     question: "What is crowd control security?",
     answer:
-      "Crowd control security manages safe, orderly people movement at events, public gatherings, and high-traffic locations. Personnel manage queues, entrances, exits, restricted zones, crowd flow, and emergency evacuation routes. Proper planning minimises congestion and safety risks.",
+      "Crowd control security is about keeping people moving safely and predictably through queues, entrances, exits and restricted zones at events, public gatherings and other high-traffic locations. Done well, it prevents the bottlenecks and congestion that turn into genuine safety risks, and keeps emergency evacuation routes clear if they're ever needed.",
     category: "services",
   },
   {
     question: "What is traffic marshalling?",
     answer:
-      "Traffic marshalling involves managing vehicle and pedestrian movement around a property, workplace or event. Traffic marshals assist with vehicle entry/exit, parking areas, delivery vehicles, pedestrian crossings, event traffic, and restricted vehicle zones.",
+      "Traffic marshalling is the management of vehicle and pedestrian movement around a property, workplace or event — directing entry and exit, managing parking and delivery vehicles, and keeping pedestrian crossings and restricted vehicle zones safe and orderly. It's especially valuable anywhere vehicle and foot traffic overlap under time pressure, like event load-in or a busy construction site.",
     category: "services",
   },
   {
     question: "What is security concierge service?",
     answer:
-      "Security concierge combines security responsibilities with front-of-house support. Services include visitor registration, access management, general enquiries, contractor management, deliveries, lobby monitoring, and incident reporting. Suitable for corporate offices, condominiums, and commercial buildings.",
+      "Security concierge blends front-of-house hospitality with genuine security responsibility — the same officer who greets visitors and manages deliveries is also handling visitor registration, access control and incident reporting. It's a natural fit for corporate offices, condominiums and commercial buildings that want a welcoming first impression without compromising on security.",
     category: "services",
   },
   {
     question: "What is retail loss prevention?",
     answer:
-      "Retail loss prevention focuses on reducing theft, shoplifting, fraud, and activities causing inventory/financial losses. Loss prevention officers monitor customer activity, identify suspicious behaviour, observe high-risk areas, and support the retailer's internal security procedures.",
+      "Retail loss prevention focuses on reducing theft, shoplifting, fraud and other activity that eats into inventory and revenue. Loss prevention officers watch for suspicious behaviour, monitor high-risk areas of the store, and work alongside the retailer's own internal procedures rather than replacing them — the goal is to close gaps, not just add a uniform on the floor.",
     category: "services",
   },
   {
     question: "What is executive protection?",
     answer:
-      "Executive protection provides specialised personal security for executives, dignitaries, high-profile individuals and others who may require additional protection. Services include security planning, movement coordination, escorting, and threat awareness based on requirements and risk profile.",
+      "Executive protection is specialised personal security for executives, dignitaries and other high-profile individuals who face an elevated risk profile. It covers security planning, coordinated movement, close escorting and ongoing threat awareness, tailored to the specific individual and situation rather than delivered as a standard package.",
     category: "services",
   },
   {
     question: "What is CCTV monitoring?",
     answer:
-      "CCTV monitoring uses surveillance cameras to observe activity around a property and identify potential security incidents. Systems monitored on-site or remotely support security officers by providing visibility across entrances, common areas, perimeters, and restricted locations.",
+      "CCTV monitoring uses surveillance cameras to observe a property and flag potential security incidents as they happen, whether the footage is reviewed on-site or remotely. It gives security officers visibility across entrances, common areas, perimeters and restricted zones that would otherwise be impossible to cover by sight alone.",
     category: "products",
   },
   {
     question: "Is CCTV better than security guards?",
     answer:
-      "CCTV and security guards perform different functions and are most effective together. CCTV provides continuous visual coverage and recorded evidence; officers investigate situations, interact with people, and respond physically. Integrated approaches provide stronger protection than either alone.",
+      "Neither replaces the other — they solve different problems. CCTV offers continuous visual coverage and a recorded account of what happened; officers are the ones who actually investigate a situation, engage with people, and physically respond when something's wrong. Sites that combine both get stronger protection than either approach delivers alone.",
     category: "products",
   },
   {
     question: "What is remote CCTV monitoring?",
     answer:
-      "Remote CCTV monitoring allows property cameras to be monitored from another location or central facility. When suspicious activity or alarms occur, operators review situations and follow response procedures. This improves surveillance coverage while reducing on-site personnel watching multiple screens.",
+      "Remote CCTV monitoring means your cameras are watched from a separate location or central command centre rather than only reviewed on-site after the fact. When an alarm triggers or something looks suspicious, an operator reviews it in real time and follows a defined response procedure — extending coverage without needing personnel watching multiple screens at every individual site.",
     category: "products",
   },
   {
     question: "What is virtual guard patrolling?",
     answer:
-      "Virtual guard patrolling uses remotely monitored CCTV cameras and security technology to conduct scheduled surveillance checks without requiring an officer to physically patrol every location. It complements physical officers and is useful for camera/sensor-monitorable areas.",
+      "Virtual guard patrolling uses remotely monitored cameras and detection technology to run scheduled surveillance checks across a site without an officer physically walking the route every time. It's a strong complement to physical guarding, particularly for large areas or off-hours coverage where a camera-monitorable zone doesn't justify a permanent post.",
     category: "products",
   },
   {
     question: "What is an access control system?",
     answer:
-      "An access control system manages who is allowed to enter specific areas of a building or property. Access is controlled via access cards, PIN codes, mobile credentials, biometric identification, facial recognition, or intercom systems, preventing unauthorised entry while maintaining access records.",
+      "An access control system governs who can enter specific areas of a building — through access cards, PIN codes, mobile credentials, biometrics or facial recognition, or a manned intercom. Beyond simply keeping unauthorised people out, it creates a reliable record of who came and went, and when.",
     category: "products",
   },
   {
     question: "Can CCTV and access control systems work together?",
     answer:
-      "Yes. CCTV and access control systems can be integrated to provide stronger security. When someone enters controlled doors, CCTV footage verifies the person. Combining systems improves situational awareness and incident investigation capabilities.",
+      "Yes, and integrating the two makes both stronger. When someone badges through a controlled door, linked CCTV footage can confirm exactly who it was, turning a bare access log into verified evidence. That combination improves both situational awareness in the moment and investigation quality after an incident.",
     category: "products",
   },
   {
     question: "What is License Plate Recognition?",
     answer:
-      "License Plate Recognition (LPR) uses cameras and software to identify vehicle licence plates. LPR supports vehicle access control, car park security, approved vehicle whitelisting, entry/exit records, and vehicle-related incident investigation, and integrates with gates and barriers.",
+      "License Plate Recognition (LPR) uses cameras and software to automatically identify vehicle number plates as they pass. It's commonly used for vehicle access control, car park security, whitelisting approved vehicles, keeping entry and exit records, and supporting investigations into vehicle-related incidents — and it integrates directly with gates and barriers for automated entry.",
     category: "products",
   },
   {
     question: "What is remote gate release?",
     answer:
-      "Remote gate release enables an authorised operator to communicate with visitors and remotely approve or reject access to a property. Combined with intercoms, CCTV, vehicle cameras, access control, and remote monitoring, it reduces the need for permanently stationed personnel.",
+      "Remote gate release lets an authorised operator speak with a visitor and approve or deny entry remotely, usually paired with intercoms, CCTV, vehicle cameras and broader access control and monitoring systems. It's an effective way to manage lower-traffic entrances without needing a permanently stationed officer at every gate.",
     category: "products",
   },
   {
     question: "What is AI video analytics in security?",
     answer:
-      "AI video analytics uses software to analyse CCTV footage and identify specific activities or events. Depending on the system, analytics may detect people, vehicles, restricted area movement, unusual activity, and crowd conditions, with alerts sent to security personnel for assessment.",
+      "AI video analytics applies software to CCTV footage to automatically flag specific activity — people or vehicles in restricted zones, unusual movement, or crowd conditions worth a closer look — and routes those alerts to security personnel for assessment. It effectively gives every camera a second set of eyes that never gets tired or distracted.",
     category: "products",
   },
   {
     question: "Can security technology reduce manpower requirements?",
     answer:
-      "In some environments, security technology reduces repetitive tasks, allowing personnel to focus on higher-value responsibilities. CCTV analytics, remote monitoring, access control, and virtual patrols automate surveillance and access management. The appropriate manpower/technology balance depends on operational and security requirements.",
+      "In the right environment, yes — CCTV analytics, remote monitoring, access control and virtual patrols can automate the repetitive parts of surveillance and access management, freeing officers to focus on higher-value work rather than routine watching. The right balance between manpower and technology depends entirely on your site's specific operational and security requirements, which is exactly what a proper assessment should map out.",
     category: "products",
   },
   {
     question: "What should I ask before hiring a security company?",
     answer:
-      "Ask about proper licensing, experience with similar properties, officer training/supervision, absence procedures, incident reporting, 24/7 support availability, CCTV/access control integration, customisation capability, and service quality monitoring. Consider price alongside operational capability, service quality, and reliability.",
+      "Ask about their licensing status, direct experience with properties similar to yours, and how officers are trained and supervised once deployed. Also ask how they handle absences, incident reporting, 24/7 support, and whether their CCTV and access control capabilities integrate cleanly with your site. Price matters, but weigh it against operational capability, service quality and reliability — the cheapest quote isn't always the best value.",
     category: "general",
   },
   {
     question: "Can I hire security guards for a short-term assignment?",
     answer:
-      "Yes. Temporary or short-term security services can be arranged for requirements such as events, temporary projects, construction activities, emergency coverage, short-term property protection, or additional manpower during peak periods. Golden Shield provides both temporary and longer-term solutions.",
+      "Yes — temporary and short-term security is a normal request, whether it's for a one-off event, a temporary project, construction activity, emergency coverage, short-term property protection, or simply extra manpower during a peak period. Golden Shield handles both short-term deployments and longer-term contracts, so you're not locked into a full annual commitment for a one-week need.",
     category: "general",
   },
   {
     question: "Can businesses combine security manpower and technology?",
     answer:
-      "Yes. Modern security operations increasingly combine trained security officers with technologies such as CCTV, access control, alarms, remote monitoring and video analytics. Technology monitors multiple locations while officers investigate alerts and handle situations requiring human judgement.",
+      "Yes, and it's increasingly the norm rather than the exception — pairing trained officers with CCTV, access control, alarms, remote monitoring and video analytics. Technology handles the constant, wide-area watching, while officers step in to investigate alerts and handle anything that genuinely requires human judgement.",
     category: "products",
   },
   {
     question: "Does every property need the same security solution?",
     answer:
-      "No. Security requirements vary according to the type of property, operating hours, number of occupants, visitor traffic, valuable assets and potential security risks. Condominiums focus on visitor/vehicle management; industrial facilities require perimeter protection. Solutions should address actual site risks.",
+      "No — requirements vary significantly based on the type of property, its operating hours, occupancy, visitor traffic, valuable assets and specific risk factors. A condominium is usually focused on visitor and vehicle management, while an industrial facility needs stronger perimeter protection; the right solution addresses your site's actual risks, not a generic template.",
     category: "general",
   },
   {
     question: "Why hire a professional security company instead of managing security internally?",
     answer:
-      "Professional companies provide trained personnel, operational supervision, deployment planning, incident procedures, and specialised expertise. Outsourcing allows organisations to focus on primary operations while experienced providers manage day-to-day security requirements.",
+      "A professional security company brings trained personnel, operational supervision, deployment planning, established incident procedures and specialised expertise that's genuinely difficult to replicate in-house. Outsourcing lets your organisation stay focused on its core operations while an experienced provider handles the day-to-day realities of security management.",
     category: "general",
   },
   {
     question: "Is Golden Shield Security Services a licensed security company in Singapore?",
     answer:
-      "Yes. Golden Shield Security Services is a Singapore-based security agency licensed by the Police Licensing & Regulatory Department (PLRD). The company provides professional security manpower and technology-driven solutions for customised protection.",
+      "Yes — Golden Shield is a Singapore-based security agency licensed by the Police Licensing & Regulatory Department (PLRD). We provide both professional security manpower and technology-driven solutions, built around the specific protection each client actually needs.",
     category: "general",
   },
   {
     question: "What types of properties can Golden Shield protect?",
     answer:
-      "Golden Shield's services cover residential condominiums, commercial buildings, industrial facilities, construction sites, retail properties, schools/campuses, healthcare facilities, events, religious institutions, and high-value assets. Security arrangements are customised according to individual site requirements.",
+      "Our work spans residential condominiums, commercial buildings, industrial facilities, construction sites, retail properties, schools and campuses, healthcare facilities, events, religious institutions and high-value assets. Every arrangement is customised to the specific site rather than delivered as a standard package.",
     category: "general",
   },
   {
     question: "Does Golden Shield provide both security guards and security technology?",
     answer:
-      "Yes. Golden Shield provides security manpower together with technology-based security solutions. Depending on the project, solutions incorporate security officers, CCTV surveillance, access control, remote monitoring, virtual guard patrolling, and integrated security technologies.",
+      "Yes — we provide security manpower alongside technology-based solutions, and most engagements combine both. Depending on the project, that can include security officers, CCTV surveillance, access control, remote monitoring, virtual guard patrolling and other integrated security technologies working together.",
     category: "general",
   },
   {
     question: "Does Golden Shield provide 24/7 security services?",
     answer:
-      "Yes. Golden Shield can provide round-the-clock security for sites requiring continuous protection. Deployments include security officers, patrol services, and technology-based monitoring depending on location and security requirements.",
+      "Yes. We provide round-the-clock security for sites that need continuous protection, combining security officers, patrol services and technology-based monitoring in whatever mix suits the location and its specific requirements.",
     category: "general",
   },
   {
     question: "How can I get a security quotation in Singapore?",
     answer:
-      "Provide information about your property, operating hours, number of security positions, and main security concerns. Golden Shield reviews requirements and recommends an appropriate security manpower and technology combination — contact us for an assessment or quotation.",
+      "Share some basic details about your property, operating hours, the number of security positions you need, and your main security concerns. We'll review your requirements and recommend the right combination of manpower and technology — contact us to get started on an assessment or quotation.",
     category: "general",
   },
 ];
