@@ -44,7 +44,7 @@ export default async function ServiceDetailPage({ params }: Args) {
   const url = `/services/${service.slug}`;
 
   return (
-    <Container className="py-20">
+    <Container className="pt-32 pb-20">
       <LivePreviewRefresh />
       <JsonLd
         data={[

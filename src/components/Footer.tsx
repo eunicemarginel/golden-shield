@@ -9,10 +9,10 @@ export function Footer() {
       <Container className="grid gap-10 py-16 md:grid-cols-4">
         <div className="md:col-span-2">
           <Image
-            src="/brand/logo-full.png"
+            src="/brand/gss-logo.png"
             alt="Golden Shield Security Services"
-            width={678}
-            height={260}
+            width={496}
+            height={135}
             className="h-16 w-auto"
           />
           <p className="mt-4 max-w-sm text-sm leading-relaxed">

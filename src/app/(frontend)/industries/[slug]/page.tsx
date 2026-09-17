@@ -62,7 +62,7 @@ export default async function IndustryDetailPage({ params }: Args) {
   const url = `/industries/${industry.slug}`;
 
   return (
-    <Container className="py-20">
+    <Container className="pt-32 pb-20">
       <LivePreviewRefresh />
       <JsonLd
         data={breadcrumbSchema([

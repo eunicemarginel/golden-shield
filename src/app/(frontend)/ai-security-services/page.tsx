@@ -39,7 +39,7 @@ export default async function AiSecurityServicesPage() {
           { name: "AI & Digital Security Technology", url: "/ai-security-services" },
         ])}
       />
-      <section className="relative overflow-hidden bg-ink py-24 text-white">
+      <section className="relative overflow-hidden bg-ink pt-32 pb-24 text-white">
         <div className="grid-texture pointer-events-none absolute inset-0" />
         <Container className="relative">
           <Reveal className="max-w-2xl">

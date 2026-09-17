@@ -44,7 +44,7 @@ export default async function EnforcementDetailPage({ params }: Args) {
   const url = `/enforcement-and-compliance/${service.slug}`;
 
   return (
-    <Container className="py-20">
+    <Container className="pt-32 pb-20">
       <LivePreviewRefresh />
       <JsonLd
         data={[

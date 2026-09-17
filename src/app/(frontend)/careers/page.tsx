@@ -44,7 +44,7 @@ export default async function CareersPage() {
       />
       <section className="relative overflow-hidden bg-ink text-white">
         <div className="grid-texture pointer-events-none absolute inset-0" />
-        <Container className="relative py-20">
+        <Container className="relative pt-28 pb-20">
           <Reveal>
             <span className="text-sm font-semibold uppercase tracking-widest text-gold-bright">
               Careers

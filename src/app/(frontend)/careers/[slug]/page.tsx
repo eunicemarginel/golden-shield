@@ -39,7 +39,7 @@ export default async function JobDetailPage({ params }: Args) {
   const url = `/careers/${job.slug}`;
 
   return (
-    <Container className="py-20">
+    <Container className="pt-32 pb-20">
       <JsonLd
         data={[
           jobPostingSchema({

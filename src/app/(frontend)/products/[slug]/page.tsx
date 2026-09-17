@@ -44,7 +44,7 @@ export default async function ProductDetailPage({ params }: Args) {
   const url = `/products/${product.slug}`;
 
   return (
-    <Container className="py-20">
+    <Container className="pt-32 pb-20">
       <LivePreviewRefresh />
       <JsonLd
         data={[
