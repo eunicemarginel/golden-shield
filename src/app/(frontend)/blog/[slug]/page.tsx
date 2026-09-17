@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Container } from "@/components/Container";
 import { RichText } from "@/components/RichText";
 import { PhotoSlot } from "@/components/PhotoSlot";
+import { BackLink } from "@/components/BackLink";
 import { LivePreviewRefresh } from "@/components/payload/LivePreviewRefresh";
 import { getPayloadClient } from "@/lib/payload";
 import { isPreviewRequest } from "@/lib/preview";
@@ -39,7 +40,8 @@ export default async function BlogPostPage({ params }: Args) {
   return (
     <Container className="py-20">
       <LivePreviewRefresh />
-      <span className="text-sm font-semibold uppercase tracking-widest text-gold">
+      <BackLink href="/blog" label="Back to Blog" />
+      <span className="mt-6 block text-sm font-semibold uppercase tracking-widest text-gold">
         {new Date(post.publishedDate).toLocaleDateString("en-SG", {
           year: "numeric",
           month: "long",

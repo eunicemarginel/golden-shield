@@ -4,6 +4,7 @@ import { Container } from "@/components/Container";
 import { RichText } from "@/components/RichText";
 import { Button } from "@/components/Button";
 import { PhotoSlot } from "@/components/PhotoSlot";
+import { BackLink } from "@/components/BackLink";
 import { LivePreviewRefresh } from "@/components/payload/LivePreviewRefresh";
 import { getPayloadClient } from "@/lib/payload";
 import { isPreviewRequest } from "@/lib/preview";
@@ -40,7 +41,8 @@ export default async function EnforcementDetailPage({ params }: Args) {
   return (
     <Container className="py-20">
       <LivePreviewRefresh />
-      <span className="text-sm font-semibold uppercase tracking-widest text-gold">
+      <BackLink href="/enforcement-and-compliance" label="Back to Enforcement & Compliance" />
+      <span className="mt-6 block text-sm font-semibold uppercase tracking-widest text-gold">
         Enforcement &amp; Compliance
       </span>
       <h1 className="mt-3 max-w-3xl text-4xl font-bold tracking-tight text-foreground">

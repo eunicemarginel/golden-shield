@@ -2,13 +2,20 @@
 
 import { Link } from "next-view-transitions";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Container } from "@/components/Container";
 import { Button } from "@/components/Button";
 import { primaryNav, secondaryNav } from "@/lib/nav";
 
+function isActivePath(pathname: string, href: string) {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
@@ -25,20 +32,16 @@ export function Header() {
         </Link>
 
         <nav className="hidden flex-1 items-center justify-evenly px-10 lg:flex">
-          {primaryNav.map((item) => (
+          {[...primaryNav, ...secondaryNav].map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-medium whitespace-nowrap text-foreground-muted transition-colors hover:text-foreground"
-            >
-              {item.label}
-            </Link>
-          ))}
-          {secondaryNav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-sm font-medium whitespace-nowrap text-foreground-muted transition-colors hover:text-foreground"
+              aria-current={isActivePath(pathname, item.href) ? "page" : undefined}
+              className={`text-sm whitespace-nowrap transition-colors ${
+                isActivePath(pathname, item.href)
+                  ? "font-semibold text-gold"
+                  : "font-medium text-foreground-muted hover:text-foreground"
+              }`}
             >
               {item.label}
             </Link>
@@ -75,7 +78,12 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-2.5 text-sm font-medium text-foreground hover:bg-surface"
+                aria-current={isActivePath(pathname, item.href) ? "page" : undefined}
+                className={`rounded-lg px-3 py-2.5 text-sm hover:bg-surface ${
+                  isActivePath(pathname, item.href)
+                    ? "font-semibold text-gold"
+                    : "font-medium text-foreground"
+                }`}
               >
                 {item.label}
               </Link>

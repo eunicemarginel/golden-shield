@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Container } from "@/components/Container";
 import { RichText } from "@/components/RichText";
 import { Button } from "@/components/Button";
+import { BackLink } from "@/components/BackLink";
 import { getPayloadClient } from "@/lib/payload";
 
 type Args = { params: Promise<{ slug: string }> };
@@ -34,7 +35,8 @@ export default async function JobDetailPage({ params }: Args) {
 
   return (
     <Container className="py-20">
-      <span className="text-sm font-semibold uppercase tracking-widest text-gold">
+      <BackLink href="/careers" label="Back to Careers" />
+      <span className="mt-6 block text-sm font-semibold uppercase tracking-widest text-gold">
         {job.employmentType?.replace("-", " ")}
       </span>
       <h1 className="mt-3 max-w-3xl text-4xl font-bold tracking-tight text-foreground">
