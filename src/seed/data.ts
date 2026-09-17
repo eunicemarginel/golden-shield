@@ -790,3 +790,58 @@ export const jobOpenings: JobOpeningSeed[] = [
     ],
   },
 ];
+
+export type PostSeed = {
+  title: string;
+  slug: string;
+  excerpt: string;
+  publishedDate: string;
+  body: string[];
+};
+
+export const additionalPosts: PostSeed[] = [
+  {
+    title: "Understanding PLRD Licensing: What It Means When You Hire a Security Vendor",
+    slug: "understanding-plrd-licensing-singapore",
+    excerpt:
+      "Every security agency operating in Singapore must be licensed by the Police Licensing & Regulatory Department — here's what that actually covers, and what to check before you sign.",
+    publishedDate: "2026-06-02T09:00:00.000Z",
+    body: [
+      "In Singapore, security agencies and the officers they deploy are regulated by the Police Licensing & Regulatory Department (PLRD) under the Private Security Industry Act. A valid PLRD licence means the agency has met requirements around company registration, management fit-and-proper checks, and officer training standards — it isn't just a formality, it's the baseline that separates a legitimate vendor from an unregulated one.",
+      "When evaluating a security vendor, ask to see the agency's licence and confirm that individual officers hold the appropriate rank certification for the role you're hiring them for (a Basic Security Officer certificate differs from supervisory or specialist certifications). A vendor that can't produce this readily, or seems vague about it, is a real warning sign — licensing gaps create liability exposure for your organisation too, not just the vendor.",
+    ],
+  },
+  {
+    title: "Manned Guarding vs AI Surveillance: Why Most Sites in Singapore Need Both",
+    slug: "manned-guarding-vs-ai-surveillance",
+    excerpt:
+      "AI detection and virtual patrolling extend coverage, but they don't replace an officer's judgement on the ground. Here's how the two actually complement each other.",
+    publishedDate: "2026-07-08T09:00:00.000Z",
+    body: [
+      "AI-powered surveillance is very good at what it's good at: watching every camera feed simultaneously without fatigue, flagging unusual activity at 3am, and covering large or low-traffic areas that don't justify a full-time officer post. What it can't do is make a judgement call when it matters — de-escalate a confrontation, verify identity face-to-face, or physically respond to an incident in progress.",
+      "That's why most sites we work with in Singapore end up with a blended approach rather than choosing one over the other: technology handles constant, wide-area monitoring and flags anomalies, while officers are deployed where human presence and decision-making actually change the outcome — entrances, high-risk zones, and incident response. The right mix depends on your site's layout and risk profile, which is exactly what a proper security assessment should map out before recommending either.",
+    ],
+  },
+  {
+    title: "What to Look for in a CCTV and Surveillance System for Your Business",
+    slug: "cctv-surveillance-system-checklist",
+    excerpt:
+      "Camera count isn't the metric that matters. Coverage, retention, and who's actually watching the footage are what determine whether a CCTV system earns its cost.",
+    publishedDate: "2026-08-05T09:00:00.000Z",
+    body: [
+      "It's easy to judge a CCTV proposal by camera count, but the more important questions are about coverage and follow-through: are entrances, loading bays and cash-handling areas actually in frame, or just the easy-to-mount spots? How long is footage retained, and does that match how quickly an incident is typically reported? And critically — is anyone actually watching in real time, or is footage only ever reviewed after something has already gone wrong?",
+      "The biggest gap we see in existing systems isn't camera quality, it's the lack of a monitoring plan behind the hardware. A camera that only gets reviewed retroactively is a recording device, not a security measure. Pairing CCTV with a staffed command centre — or at minimum, AI analytics that flag anomalies for review — is what turns footage into something that can actually prevent or interrupt an incident, not just document it afterward.",
+    ],
+  },
+  {
+    title: "Event Security Planning: A Checklist for Singapore Organisers",
+    slug: "event-security-planning-checklist-singapore",
+    excerpt:
+      "From crowd estimates to the Public Order Act, here's what to plan for before your event date, not after.",
+    publishedDate: "2026-09-02T09:00:00.000Z",
+    body: [
+      "Event security planning should start well before the event date, not the week of. Key things to map out early: expected crowd size and flow, entrances and exits (including emergency egress), restricted or VIP zones, traffic and parking management, and how officers will communicate and escalate issues during the event. Under Singapore's Public Order Act 2017, events expected to draw more than 5,000 attendees generally require a Notice of Intention to Organise an Event, along with an appropriate security plan — this isn't something to leave to the last minute.",
+      "Officer-to-attendee ratios, briefing content, and coordination with venue staff or police (for larger events) should all be settled well ahead of time, not improvised on the day. The organisers who avoid last-minute scrambles are the ones who treat security planning as part of event planning from the start, not a checkbox added once the venue and date are locked in.",
+    ],
+  },
+];

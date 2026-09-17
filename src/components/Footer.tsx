@@ -13,7 +13,7 @@ export function Footer() {
             alt="Golden Shield Security Services"
             width={678}
             height={260}
-            className="h-10 w-auto"
+            className="h-16 w-auto"
           />
           <p className="mt-4 max-w-sm text-sm leading-relaxed">
             Licensed, disciplined and technology-driven security services in

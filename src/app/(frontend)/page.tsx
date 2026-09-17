@@ -2,9 +2,10 @@ import { Container } from "@/components/Container";
 import { Button } from "@/components/Button";
 import { Card } from "@/components/Card";
 import { HeroVideo } from "@/components/HeroVideo";
+import { getPayloadClient } from "@/lib/payload";
 
 const stats = [
-  { value: "10+", label: "Years in Operation" },
+  { value: "7+", label: "Years in Operation" },
   { value: "24/7", label: "Command Centre Monitoring" },
   { value: "100%", label: "PLRD Licensed Officers" },
   { value: "SAS", label: "Association Member" },
@@ -17,6 +18,7 @@ const pillars = [
     title: "Security Services",
     description:
       "Licensed guarding, patrol and event security teams for residential, commercial and industrial sites.",
+    imageKey: "homeServicesImage" as const,
   },
   {
     href: "/products",
@@ -24,6 +26,7 @@ const pillars = [
     title: "Products & AI Solutions",
     description:
       "CCTV, access control, AI detection and virtual guard patrolling backed by a 24/7 command centre.",
+    imageKey: "homeProductsImage" as const,
   },
   {
     href: "/industries",
@@ -31,6 +34,7 @@ const pillars = [
     title: "Industries We Protect",
     description:
       "Tailored security programmes for schools, healthcare, retail, logistics, hospitality and more.",
+    imageKey: "homeIndustriesImage" as const,
   },
   {
     href: "/enforcement-and-compliance",
@@ -38,6 +42,7 @@ const pillars = [
     title: "Enforcement & Compliance",
     description:
       "Security audits, private investigation, red teaming and outcome-based contract consultancy.",
+    imageKey: "homeEnforcementImage" as const,
   },
 ];
 
@@ -64,7 +69,10 @@ const framework = [
   },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const payload = await getPayloadClient();
+  const siteSettings = await payload.findGlobal({ slug: "site-settings" });
+
   return (
     <>
       <section className="relative overflow-hidden bg-ink text-white">
@@ -127,8 +135,8 @@ export default function Home() {
             </p>
           </div>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {pillars.map((pillar) => (
-              <Card key={pillar.href} {...pillar} />
+            {pillars.map(({ imageKey, ...pillar }) => (
+              <Card key={pillar.href} {...pillar} image={siteSettings?.[imageKey]} />
             ))}
           </div>
         </Container>
@@ -141,7 +149,7 @@ export default function Home() {
               Our Approach
             </h2>
             <p className="mt-3 text-3xl font-bold tracking-tight text-foreground">
-              Risk planning &amp; crisis response
+              Risk Planning &amp; Crisis Response
             </p>
             <p className="mt-4 text-foreground-muted">
               Golden Shield runs on a four-tier framework for effective

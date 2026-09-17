@@ -16,6 +16,7 @@ import { Industries } from "@/collections/Industries";
 import { Posts } from "@/collections/Posts";
 import { FAQs } from "@/collections/FAQs";
 import { JobOpenings } from "@/collections/JobOpenings";
+import { SiteSettings } from "@/globals/SiteSettings";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -38,6 +39,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Services, Products, Industries, Posts, FAQs, JobOpenings],
+  globals: [SiteSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {

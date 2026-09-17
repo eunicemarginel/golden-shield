@@ -103,8 +103,12 @@ export interface Config {
     defaultIDType: number;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'site-settings': SiteSetting;
+  };
+  globalsSelect: {
+    'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
+  };
   locale: null;
   widgets: {
     collections: CollectionsWidget;
@@ -169,9 +173,9 @@ export interface User {
 export interface Media {
   id: number;
   /**
-   * A short description of the photo (for accessibility and SEO), e.g. "Security officer at building lobby".
+   * A short description of the photo (for accessibility and SEO), e.g. "Security officer at building lobby". Auto-filled from the filename if left blank — feel free to improve it later.
    */
-  alt: string;
+  alt?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -1070,6 +1074,51 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * One-off photos for pages that aren't tied to a list of items, like the homepage and About page.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings".
+ */
+export interface SiteSetting {
+  id: number;
+  /**
+   * Upload photo as home-services.jpg (or any format) in Media, then pick it here.
+   */
+  homeServicesImage?: (number | null) | Media;
+  /**
+   * Upload photo as home-products.jpg in Media, then pick it here.
+   */
+  homeProductsImage?: (number | null) | Media;
+  /**
+   * Upload photo as home-industries.jpg in Media, then pick it here.
+   */
+  homeIndustriesImage?: (number | null) | Media;
+  /**
+   * Upload photo as home-enforcement.jpg in Media, then pick it here.
+   */
+  homeEnforcementImage?: (number | null) | Media;
+  /**
+   * Upload photo as about-team.jpg in Media, then pick it here.
+   */
+  aboutPhoto?: (number | null) | Media;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings_select".
+ */
+export interface SiteSettingsSelect<T extends boolean = true> {
+  homeServicesImage?: T;
+  homeProductsImage?: T;
+  homeIndustriesImage?: T;
+  homeEnforcementImage?: T;
+  aboutPhoto?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

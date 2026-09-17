@@ -8,13 +8,29 @@ export const metadata: Metadata = {
     "Answers to common questions about Golden Shield Security Services' guarding, technology and enforcement services.",
 };
 
+const categoryLabels: Record<string, string> = {
+  general: "General",
+  services: "Services",
+  products: "Products & Technology",
+  industries: "Industries",
+};
+
+const categoryOrder = ["general", "services", "products", "industries"];
+
 export default async function FaqPage() {
   const payload = await getPayloadClient();
   const { docs: faqs } = await payload.find({
     collection: "faqs",
-    sort: "category",
     limit: 200,
   });
+
+  const groups = categoryOrder
+    .map((category) => ({
+      category,
+      label: categoryLabels[category],
+      items: faqs.filter((faq) => (faq.category ?? "general") === category),
+    }))
+    .filter((group) => group.items.length > 0);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -30,34 +46,73 @@ export default async function FaqPage() {
   };
 
   return (
-    <Container className="py-20">
-      <div className="max-w-2xl">
-        <span className="text-sm font-semibold uppercase tracking-widest text-gold">
-          FAQ
-        </span>
-        <h1 className="mt-3 text-4xl font-bold tracking-tight text-foreground">
-          Frequently asked questions
-        </h1>
-      </div>
+    <>
+      <section className="bg-ink text-white">
+        <Container className="py-20">
+          <span className="text-sm font-semibold uppercase tracking-widest text-gold-bright">
+            FAQ
+          </span>
+          <h1 className="mt-3 max-w-2xl text-4xl font-bold tracking-tight">
+            Frequently asked questions
+          </h1>
+          <p className="mt-4 max-w-2xl text-ink-muted">
+            Answers on licensing, guarding, technology and what to look for
+            when hiring a security partner in Singapore. Can&apos;t find what
+            you need?{" "}
+            <a href="/contact-us" className="text-gold-bright hover:underline">
+              Get in touch
+            </a>
+            .
+          </p>
+        </Container>
+      </section>
 
-      {faqs.length > 0 ? (
-        <div className="mt-12 max-w-3xl divide-y divide-border rounded-2xl border border-border">
-          {faqs.map((faq) => (
-            <details key={faq.id} className="group p-6">
-              <summary className="cursor-pointer list-none font-semibold text-foreground marker:content-none">
-                {faq.question}
-              </summary>
-              <p className="mt-3 text-sm leading-relaxed text-foreground-muted">
-                {faq.answer}
-              </p>
-            </details>
-          ))}
-        </div>
-      ) : (
-        <p className="mt-12 text-sm text-foreground-muted">
-          FAQs are being finalised &mdash; check back soon.
-        </p>
-      )}
+      <Container className="py-20">
+        {groups.length > 0 ? (
+          <div className="space-y-16">
+            {groups.map((group) => (
+              <div key={group.category}>
+                <h2 className="text-sm font-semibold uppercase tracking-widest text-gold">
+                  {group.label}
+                </h2>
+                <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                  {group.items.map((faq) => (
+                    <details
+                      key={faq.id}
+                      className="group rounded-2xl border border-border bg-background p-6 transition-colors open:border-gold/50 open:bg-surface"
+                    >
+                      <summary className="flex cursor-pointer list-none items-start justify-between gap-4 font-semibold text-foreground marker:content-none">
+                        <span>{faq.question}</span>
+                        <svg
+                          className="mt-1 h-4 w-4 shrink-0 text-gold transition-transform duration-200 group-open:rotate-180"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          aria-hidden="true"
+                        >
+                          <path
+                            d="M5 7.5L10 12.5L15 7.5"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </summary>
+                      <p className="mt-3 text-sm leading-relaxed text-foreground-muted">
+                        {faq.answer}
+                      </p>
+                    </details>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p className="text-sm text-foreground-muted">
+            FAQs are being finalised &mdash; check back soon.
+          </p>
+        )}
+      </Container>
 
       {faqs.length > 0 && (
         <script
@@ -65,6 +120,6 @@ export default async function FaqPage() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       )}
-    </Container>
+    </>
   );
 }

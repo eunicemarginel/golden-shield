@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { PhotoSlot } from "@/components/PhotoSlot";
+import { getPayloadClient } from "@/lib/payload";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -38,7 +39,10 @@ const leadership = [
   },
 ];
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const payload = await getPayloadClient();
+  const siteSettings = await payload.findGlobal({ slug: "site-settings" });
+
   return (
     <>
       <Container className="py-20">
@@ -61,7 +65,7 @@ export default function AboutPage() {
         </div>
 
         <PhotoSlot
-          image={undefined}
+          image={siteSettings?.aboutPhoto}
           label="Office or team photo"
           aspect="aspect-[21/9]"
           className="mt-10"
