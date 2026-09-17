@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { PhotoSlot } from "@/components/PhotoSlot";
 import { Reveal } from "@/components/Reveal";
+import { GlassPanel } from "@/components/GlassPanel";
 import { JsonLd } from "@/components/JsonLd";
 import { getPayloadClient } from "@/lib/payload";
 import { breadcrumbSchema } from "@/lib/schema";
@@ -92,7 +93,7 @@ export default async function AboutPage() {
           <PhotoSlot
             image={siteSettings?.aboutPhoto}
             label="Office or team photo"
-            aspect="aspect-[21/9]"
+            aspect="aspect-[16/9]"
             className="mt-10"
             sizes="(min-width: 1024px) 1024px, 100vw"
           />
@@ -123,17 +124,19 @@ export default async function AboutPage() {
           <div className="mt-10 grid gap-8 sm:grid-cols-2">
             {leadership.map((person, index) => (
               <Reveal key={person.name} delay={index * 0.1}>
-                <blockquote className="border-l-2 border-gold pl-6">
-                  <p className="text-lg leading-relaxed text-ink-muted">
-                    &ldquo;{person.quote}&rdquo;
-                  </p>
-                  <footer className="mt-4 text-sm font-semibold text-white">
-                    {person.name}
-                    <span className="ml-2 font-normal text-ink-muted">
-                      {person.role}
-                    </span>
-                  </footer>
-                </blockquote>
+                <GlassPanel className="h-full">
+                  <blockquote>
+                    <p className="text-lg leading-relaxed text-ink-muted">
+                      &ldquo;{person.quote}&rdquo;
+                    </p>
+                    <footer className="mt-4 text-sm font-semibold text-white">
+                      {person.name}
+                      <span className="ml-2 font-normal text-ink-muted">
+                        {person.role}
+                      </span>
+                    </footer>
+                  </blockquote>
+                </GlassPanel>
               </Reveal>
             ))}
           </div>
