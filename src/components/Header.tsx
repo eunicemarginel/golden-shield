@@ -49,7 +49,7 @@ export function Header() {
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         transparent
           ? "border-b border-transparent bg-transparent"
-          : "border-b border-border bg-background/90 backdrop-blur"
+          : "border-b border-white/10 bg-ink/85 backdrop-blur-md"
       }`}
     >
       <div className="h-[2px] w-full bg-gradient-to-r from-gold-dark via-gold-bright to-gold-dark" />
@@ -73,19 +73,15 @@ export function Header() {
               aria-current={isActivePath(pathname, item.href) ? "page" : undefined}
               className={`group relative py-1 text-sm whitespace-nowrap transition-colors ${
                 isActivePath(pathname, item.href)
-                  ? transparent
-                    ? "font-semibold text-gold-bright"
-                    : "font-semibold text-gold"
-                  : transparent
-                    ? "font-medium text-white/85 hover:text-white"
-                    : "font-medium text-foreground-muted hover:text-foreground"
+                  ? "font-semibold text-gold-bright"
+                  : "font-medium text-white/85 hover:text-white"
               }`}
             >
               {item.label}
               <span
-                className={`absolute -bottom-0.5 left-0 h-[1.5px] w-full origin-left scale-x-0 transition-transform duration-200 group-hover:scale-x-100 ${
-                  transparent ? "bg-gold-bright" : "bg-gold"
-                } ${isActivePath(pathname, item.href) ? "scale-x-100" : ""}`}
+                className={`absolute -bottom-0.5 left-0 h-[1.5px] w-full origin-left scale-x-0 bg-gold-bright transition-transform duration-200 group-hover:scale-x-100 ${
+                  isActivePath(pathname, item.href) ? "scale-x-100" : ""
+                }`}
               />
             </Link>
           ))}
@@ -100,23 +96,21 @@ export function Header() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className={`flex h-10 w-10 items-center justify-center rounded-full border lg:hidden ${
-            transparent ? "border-white/30" : "border-border"
-          }`}
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-white/30 lg:hidden"
           aria-expanded={open}
           aria-label="Toggle navigation menu"
         >
           <span className="sr-only">Menu</span>
           <div className="flex flex-col gap-1.5">
-            <span className={`h-0.5 w-5 ${transparent ? "bg-white" : "bg-foreground"}`} />
-            <span className={`h-0.5 w-5 ${transparent ? "bg-white" : "bg-foreground"}`} />
-            <span className={`h-0.5 w-5 ${transparent ? "bg-white" : "bg-foreground"}`} />
+            <span className="h-0.5 w-5 bg-white" />
+            <span className="h-0.5 w-5 bg-white" />
+            <span className="h-0.5 w-5 bg-white" />
           </div>
         </button>
       </div>
 
       {open && (
-        <div className="border-t border-border bg-background lg:hidden">
+        <div className="border-t border-white/10 bg-ink/95 backdrop-blur-md lg:hidden">
           <Container className="flex flex-col gap-1 py-4">
             {[...primaryNav, ...secondaryNav].map((item) => (
               <Link
@@ -124,10 +118,10 @@ export function Header() {
                 href={item.href}
                 onClick={() => setOpen(false)}
                 aria-current={isActivePath(pathname, item.href) ? "page" : undefined}
-                className={`rounded-lg px-3 py-2.5 text-sm hover:bg-surface ${
+                className={`rounded-lg px-3 py-2.5 text-sm hover:bg-white/5 ${
                   isActivePath(pathname, item.href)
-                    ? "font-semibold text-gold"
-                    : "font-medium text-foreground"
+                    ? "font-semibold text-gold-bright"
+                    : "font-medium text-white/85"
                 }`}
               >
                 {item.label}
