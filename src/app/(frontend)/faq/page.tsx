@@ -75,11 +75,11 @@ export default async function FaqPage() {
                 <h2 className="text-sm font-semibold uppercase tracking-widest text-gold">
                   {group.label}
                 </h2>
-                <div className="mt-6 grid items-start gap-4 sm:grid-cols-2">
+                <div className="mt-6 columns-1 gap-4 sm:columns-2">
                   {group.items.map((faq) => (
                     <details
                       key={faq.id}
-                      className="group rounded-2xl border border-border bg-background p-6 transition-colors open:border-gold/50 open:bg-surface"
+                      className="group mb-4 break-inside-avoid rounded-2xl border border-border bg-background p-6 transition-colors open:border-gold/50 open:bg-surface"
                     >
                       <summary className="flex cursor-pointer list-none items-start justify-between gap-4 font-semibold text-foreground marker:content-none">
                         <span>{faq.question}</span>
