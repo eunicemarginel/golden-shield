@@ -4,6 +4,7 @@ import { PhotoSlot } from "@/components/PhotoSlot";
 import { ContactForm } from "@/components/ContactForm";
 import { Reveal } from "@/components/Reveal";
 import { JsonLd } from "@/components/JsonLd";
+import { PinIcon, PhoneIcon, MailIcon } from "@/components/icons";
 import { companyInfo } from "@/lib/nav";
 import { getPayloadClient } from "@/lib/payload";
 import { getOrCreateContactForm } from "@/lib/getContactForm";
@@ -71,35 +72,42 @@ export default async function ContactPage() {
           />
         </Reveal>
 
-        <Reveal delay={0.1} className="mt-12 grid gap-12 lg:grid-cols-2">
-          <ContactForm formId={contactFormId} />
-
-          <div className="rounded-2xl border border-gold/30 bg-surface p-8">
+        <Reveal delay={0.1} className="mt-12 grid gap-8 lg:grid-cols-5">
+          <div className="rounded-2xl border border-border bg-surface p-6 shadow-sm sm:p-8 lg:col-span-3">
             <h2 className="text-lg font-semibold text-foreground">
-              {companyInfo.name}
+              Send us an enquiry
             </h2>
+            <p className="mt-1 text-sm text-foreground-muted">
+              Fill in the details below and we&apos;ll respond within 1
+              business day.
+            </p>
+            <div className="mt-6">
+              <ContactForm formId={contactFormId} />
+            </div>
+          </div>
+
+          <div className="rounded-2xl border border-gold/30 bg-ink p-6 text-white sm:p-8 lg:col-span-2">
+            <h2 className="text-lg font-semibold">{companyInfo.name}</h2>
             <dl className="mt-6 space-y-5 text-sm">
               <div className="flex gap-3">
-                <span aria-hidden className="text-lg">
-                  📍
+                <span className="mt-0.5 text-gold-bright">
+                  <PinIcon className="h-5 w-5" />
                 </span>
                 <div>
-                  <dt className="font-medium text-foreground">Address</dt>
-                  <dd className="mt-1 text-foreground-muted">
-                    {companyInfo.address}
-                  </dd>
+                  <dt className="font-medium text-white">Address</dt>
+                  <dd className="mt-1 text-ink-muted">{companyInfo.address}</dd>
                 </div>
               </div>
               <div className="flex gap-3">
-                <span aria-hidden className="text-lg">
-                  📞
+                <span className="mt-0.5 text-gold-bright">
+                  <PhoneIcon className="h-5 w-5" />
                 </span>
                 <div>
-                  <dt className="font-medium text-foreground">Phone</dt>
-                  <dd className="mt-1 text-foreground-muted">
+                  <dt className="font-medium text-white">Phone</dt>
+                  <dd className="mt-1 text-ink-muted">
                     <a
                       href={`tel:${companyInfo.phone}`}
-                      className="hover:text-gold"
+                      className="hover:text-gold-bright"
                     >
                       {companyInfo.phone}
                     </a>
@@ -107,15 +115,15 @@ export default async function ContactPage() {
                 </div>
               </div>
               <div className="flex gap-3">
-                <span aria-hidden className="text-lg">
-                  ✉️
+                <span className="mt-0.5 text-gold-bright">
+                  <MailIcon className="h-5 w-5" />
                 </span>
                 <div>
-                  <dt className="font-medium text-foreground">Email</dt>
-                  <dd className="mt-1 text-foreground-muted">
+                  <dt className="font-medium text-white">Email</dt>
+                  <dd className="mt-1 text-ink-muted">
                     <a
                       href={`mailto:${companyInfo.email}`}
-                      className="hover:text-gold"
+                      className="hover:text-gold-bright"
                     >
                       {companyInfo.email}
                     </a>

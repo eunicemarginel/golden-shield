@@ -88,7 +88,7 @@ export function Header() {
         </nav>
 
         <div className="hidden shrink-0 lg:block">
-          <Button href="/contact-us" variant="primary">
+          <Button href="/contact-us" variant="secondary" className="text-white">
             Free Security Assessment
           </Button>
         </div>
@@ -127,7 +127,7 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
-            <Button href="/contact-us" variant="primary" className="mt-2">
+            <Button href="/contact-us" variant="secondary" className="mt-2 text-white">
               Free Security Assessment
             </Button>
           </Container>
