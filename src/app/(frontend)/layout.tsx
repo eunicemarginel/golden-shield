@@ -5,6 +5,12 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import "./globals.css";
 
+// Applies to every page in this segment unless a page sets its own value.
+// Content pages read from Payload at request time when stale, so edits made
+// in /admin (new photos, copy changes, new FAQs/jobs, etc.) show up live
+// within a minute instead of requiring a new deployment.
+export const revalidate = 60;
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
