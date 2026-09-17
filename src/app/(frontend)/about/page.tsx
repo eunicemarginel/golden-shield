@@ -68,12 +68,10 @@ export default async function AboutPage() {
               </p>
               <p>
                 We&apos;re one of the few Singapore-based security companies
-                able to mount operations overseas, supported by an
-                international team experienced in both armed and unarmed
-                deployments across a range of environments. Whether the
-                engagement is day-to-day corporate protection or a high-risk
-                assignment, we scale our approach to the operational demands
-                at hand rather than applying a single standard playbook.
+                able to mount operations overseas. Whether the engagement is
+                day-to-day corporate protection or a high-risk assignment, we
+                scale our approach to the operational demands at hand rather
+                than applying a single standard playbook.
               </p>
               <p>
                 Our in-house R&amp;D team continues to develop new security
