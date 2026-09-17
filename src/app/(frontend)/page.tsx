@@ -1,6 +1,7 @@
 import { Container } from "@/components/Container";
 import { Button } from "@/components/Button";
 import { FeatureRow } from "@/components/FeatureRow";
+import { WhatWeDoShowcase } from "@/components/WhatWeDoShowcase";
 import { HeroVideo } from "@/components/HeroVideo";
 import { Reveal } from "@/components/Reveal";
 import { CountUp } from "@/components/CountUp";
@@ -75,6 +76,10 @@ const framework = [
 export default async function Home() {
   const payload = await getPayloadClient();
   const siteSettings = await payload.findGlobal({ slug: "site-settings" });
+  const resolvedPillars = pillars.map(({ imageKey, ...pillar }) => ({
+    ...pillar,
+    image: siteSettings?.[imageKey],
+  }));
 
   return (
     <>
@@ -144,14 +149,13 @@ export default async function Home() {
               business and giving you peace of mind.
             </p>
           </Reveal>
-          <div className="mt-16 space-y-20">
-            {pillars.map(({ imageKey, ...pillar }, index) => (
+          <div className="mt-16 hidden lg:block">
+            <WhatWeDoShowcase pillars={resolvedPillars} />
+          </div>
+          <div className="mt-16 space-y-20 lg:hidden">
+            {resolvedPillars.map((pillar, index) => (
               <Reveal key={pillar.href}>
-                <FeatureRow
-                  {...pillar}
-                  image={siteSettings?.[imageKey]}
-                  reverse={index % 2 === 1}
-                />
+                <FeatureRow {...pillar} reverse={index % 2 === 1} />
               </Reveal>
             ))}
           </div>
