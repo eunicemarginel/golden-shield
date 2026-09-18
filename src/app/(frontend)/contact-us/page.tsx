@@ -131,6 +131,16 @@ export default async function ContactPage() {
                 </div>
               </div>
             </dl>
+
+            <div className="mt-6 overflow-hidden rounded-xl border border-white/10">
+              <iframe
+                title={`Map showing ${companyInfo.name}`}
+                src={`https://www.google.com/maps?q=${encodeURIComponent(companyInfo.address)}&output=embed`}
+                className="h-48 w-full grayscale invert-[0.92] contrast-[0.9] sm:h-56"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
           </div>
         </Reveal>
       </Container>
