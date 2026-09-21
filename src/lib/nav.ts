@@ -36,3 +36,7 @@ export const companyInfo = {
   email: "info@golden-shield.com.sg",
   address: "20 Sin Ming Lane #04-67, Singapore 573968",
 };
+
+export function whatsappLink(message: string) {
+  return `https://wa.me/${companyInfo.whatsappNumber}?text=${encodeURIComponent(message)}`;
+}

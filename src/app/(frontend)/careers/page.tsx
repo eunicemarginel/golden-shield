@@ -3,7 +3,9 @@ import { Link } from "next-view-transitions";
 import { Container } from "@/components/Container";
 import { Reveal } from "@/components/Reveal";
 import { JsonLd } from "@/components/JsonLd";
+import { WhatsAppIcon } from "@/components/icons";
 import { getPayloadClient } from "@/lib/payload";
+import { whatsappLink } from "@/lib/nav";
 import { breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
@@ -79,21 +81,37 @@ export default async function CareersPage() {
         {openings.length > 0 ? (
           <ul className="mt-6 divide-y divide-border rounded-2xl border border-border">
             {openings.map((job) => (
-              <li key={job.id}>
-                <Link
-                  href={`/careers/${job.slug}`}
-                  className="flex flex-col gap-1 p-6 transition-colors hover:bg-surface sm:flex-row sm:items-center sm:justify-between"
-                >
-                  <div>
-                    <p className="font-semibold text-foreground">{job.title}</p>
-                    <p className="mt-1 text-sm text-foreground-muted">
-                      {job.summary}
-                    </p>
-                  </div>
-                  <span className="text-sm font-semibold text-gold">
-                    View role &rarr;
-                  </span>
+              <li
+                key={job.id}
+                className="group flex flex-col gap-4 p-6 transition-colors hover:bg-surface sm:flex-row sm:items-center sm:justify-between"
+              >
+                <Link href={`/careers/${job.slug}`} className="flex-1">
+                  <p className="font-semibold text-foreground group-hover:text-gold">
+                    {job.title}
+                  </p>
+                  <p className="mt-1 text-sm text-foreground-muted">
+                    {job.summary}
+                  </p>
                 </Link>
+                <div className="flex shrink-0 items-center gap-4">
+                  <Link
+                    href={`/careers/${job.slug}`}
+                    className="text-sm font-semibold text-gold"
+                  >
+                    View role &rarr;
+                  </Link>
+                  <a
+                    href={whatsappLink(
+                      `Hi Golden Shield, I'd like to apply for the ${job.title} position.`,
+                    )}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Apply for ${job.title} via WhatsApp`}
+                    className="flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-white transition-transform duration-200 hover:scale-110"
+                  >
+                    <WhatsAppIcon className="h-5 w-5" />
+                  </a>
+                </div>
               </li>
             ))}
           </ul>

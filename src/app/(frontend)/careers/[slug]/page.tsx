@@ -6,7 +6,9 @@ import { Button } from "@/components/Button";
 import { BackLink } from "@/components/BackLink";
 import { Reveal } from "@/components/Reveal";
 import { JsonLd } from "@/components/JsonLd";
+import { WhatsAppIcon } from "@/components/icons";
 import { getPayloadClient } from "@/lib/payload";
+import { whatsappLink } from "@/lib/nav";
 import { jobPostingSchema, breadcrumbSchema } from "@/lib/schema";
 
 type Args = { params: Promise<{ slug: string }> };
@@ -85,6 +87,17 @@ export default async function JobDetailPage({ params }: Args) {
           >
             Apply Now
           </Button>
+          <a
+            href={whatsappLink(
+              `Hi Golden Shield, I'd like to apply for the ${job.title} position.`,
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 flex w-full items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-[#25D366] hover:text-[#25D366]"
+          >
+            <WhatsAppIcon className="h-4 w-4" />
+            Apply via WhatsApp
+          </a>
         </aside>
       </Reveal>
     </Container>
