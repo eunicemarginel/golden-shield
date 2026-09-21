@@ -6,7 +6,10 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Container } from "@/components/Container";
 import { Button } from "@/components/Button";
-import { primaryNav, secondaryNav } from "@/lib/nav";
+import { NavDropdown, MobileNavAccordion, type NavDropdownItem } from "@/components/NavDropdown";
+import { leadingNav, primaryNav, secondaryNav } from "@/lib/nav";
+
+export type NavData = Record<string, NavDropdownItem[]>;
 
 function isActivePath(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
@@ -30,7 +33,7 @@ const DARK_HERO_ROUTES = new Set([
   "/contact-us",
 ]);
 
-export function Header() {
+export function Header({ navData }: { navData: NavData }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
@@ -43,6 +46,21 @@ export function Header() {
   }, [pathname]);
 
   const transparent = DARK_HERO_ROUTES.has(pathname) && !scrolled && !open;
+
+  const linkClassName = (href: string) =>
+    `group relative py-1 text-sm whitespace-nowrap transition-colors ${
+      isActivePath(pathname, href)
+        ? "font-semibold text-gold-bright"
+        : "font-medium text-white/85 hover:text-white"
+    }`;
+
+  const underline = (href: string) => (
+    <span
+      className={`absolute -bottom-0.5 left-0 h-[1.5px] w-full origin-left scale-x-0 bg-gold-bright transition-transform duration-200 group-hover:scale-x-100 ${
+        isActivePath(pathname, href) ? "scale-x-100" : ""
+      }`}
+    />
+  );
 
   return (
     <header
@@ -66,23 +84,36 @@ export function Header() {
         </Link>
 
         <nav className="hidden flex-1 items-center justify-evenly px-10 lg:flex">
-          {[...primaryNav, ...secondaryNav].map((item) => (
+          {leadingNav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               aria-current={isActivePath(pathname, item.href) ? "page" : undefined}
-              className={`group relative py-1 text-sm whitespace-nowrap transition-colors ${
-                isActivePath(pathname, item.href)
-                  ? "font-semibold text-gold-bright"
-                  : "font-medium text-white/85 hover:text-white"
-              }`}
+              className={linkClassName(item.href)}
             >
               {item.label}
-              <span
-                className={`absolute -bottom-0.5 left-0 h-[1.5px] w-full origin-left scale-x-0 bg-gold-bright transition-transform duration-200 group-hover:scale-x-100 ${
-                  isActivePath(pathname, item.href) ? "scale-x-100" : ""
-                }`}
-              />
+              {underline(item.href)}
+            </Link>
+          ))}
+          {primaryNav.map((item) => (
+            <NavDropdown
+              key={item.href}
+              label={item.label}
+              href={item.href}
+              items={navData[item.href] ?? []}
+              linkClassName={linkClassName(item.href)}
+              underline={underline(item.href)}
+            />
+          ))}
+          {secondaryNav.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              aria-current={isActivePath(pathname, item.href) ? "page" : undefined}
+              className={linkClassName(item.href)}
+            >
+              {item.label}
+              {underline(item.href)}
             </Link>
           ))}
         </nav>
@@ -112,7 +143,32 @@ export function Header() {
       {open && (
         <div className="border-t border-white/10 bg-ink/95 backdrop-blur-md lg:hidden">
           <Container className="flex flex-col gap-1 py-4">
-            {[...primaryNav, ...secondaryNav].map((item) => (
+            {leadingNav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                aria-current={isActivePath(pathname, item.href) ? "page" : undefined}
+                className={`rounded-lg px-3 py-2.5 text-sm hover:bg-white/5 ${
+                  isActivePath(pathname, item.href)
+                    ? "font-semibold text-gold-bright"
+                    : "font-medium text-white/85"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+            {primaryNav.map((item) => (
+              <MobileNavAccordion
+                key={item.href}
+                label={item.label}
+                href={item.href}
+                items={navData[item.href] ?? []}
+                active={isActivePath(pathname, item.href)}
+                onNavigate={() => setOpen(false)}
+              />
+            ))}
+            {secondaryNav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}

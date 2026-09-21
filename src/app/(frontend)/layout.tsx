@@ -5,6 +5,7 @@ import { MotionConfig } from "motion/react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { getPayloadClient } from "@/lib/payload";
 import "./globals.css";
 
 // Applies to every page in this segment unless a page sets its own value.
@@ -69,7 +70,41 @@ const organizationJsonLd = {
   foundingDate: "2019",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+async function getNavData() {
+  const payload = await getPayloadClient();
+  const [services, products, industries, enforcement] = await Promise.all([
+    payload.find({
+      collection: "services",
+      where: { category: { equals: "core" } },
+      sort: "title",
+      limit: 100,
+      depth: 0,
+    }),
+    payload.find({ collection: "products", sort: "title", limit: 100, depth: 0 }),
+    payload.find({ collection: "industries", sort: "title", limit: 100, depth: 0 }),
+    payload.find({
+      collection: "services",
+      where: { category: { equals: "enforcement" } },
+      sort: "title",
+      limit: 100,
+      depth: 0,
+    }),
+  ]);
+
+  const toItems = (docs: { title: string; slug?: string | null }[]) =>
+    docs.map((doc) => ({ title: doc.title, slug: doc.slug ?? "" }));
+
+  return {
+    "/services": toItems(services.docs),
+    "/products": toItems(products.docs),
+    "/industries": toItems(industries.docs),
+    "/enforcement-and-compliance": toItems(enforcement.docs),
+  };
+}
+
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  const navData = await getNavData();
+
   return (
     <ViewTransitions>
       <html
@@ -82,7 +117,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
           />
           <MotionConfig reducedMotion="user">
-            <Header />
+            <Header navData={navData} />
             <main className="flex-1">{children}</main>
             <Footer />
             <WhatsAppButton />

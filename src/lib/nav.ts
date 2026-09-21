@@ -4,6 +4,12 @@ export type NavGroup = {
   description: string;
 };
 
+// Rendered first, before the dropdown-bearing nav items.
+export const leadingNav: NavGroup[] = [{ label: "About", href: "/about", description: "" }];
+
+// These four get a hover mega-dropdown listing every sub-page (see
+// NavDropdown.tsx) - the dropdown content itself comes from navData,
+// fetched server-side in layout.tsx, keyed by these same hrefs.
 export const primaryNav: NavGroup[] = [
   { label: "Services", href: "/services", description: "Manpower & guarding solutions" },
   { label: "Products", href: "/products", description: "AI & surveillance technology" },
@@ -16,7 +22,6 @@ export const primaryNav: NavGroup[] = [
 ];
 
 export const secondaryNav: NavGroup[] = [
-  { label: "About", href: "/about", description: "" },
   { label: "Careers", href: "/careers", description: "" },
   { label: "Blog", href: "/blog", description: "" },
   { label: "FAQ", href: "/faq", description: "" },
