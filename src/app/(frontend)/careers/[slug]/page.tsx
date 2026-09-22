@@ -70,20 +70,23 @@ export default async function JobDetailPage({ params }: Args) {
         <p className="mt-4 max-w-2xl text-foreground-muted">{job.summary}</p>
       </Reveal>
 
+      {job.heroImage && (
+        <Reveal delay={0.05}>
+          <PhotoSlot
+            image={job.heroImage}
+            label={`${job.title} photo`}
+            aspect="aspect-[5/7]"
+            className="mt-10 w-48 sm:w-56"
+            sizes="224px"
+          />
+        </Reveal>
+      )}
+
       <Reveal delay={0.1} className="mt-10 grid gap-12 lg:grid-cols-3">
         <div className="lg:col-span-2">
           <RichText data={job.body} />
         </div>
         <aside>
-          {job.heroImage && (
-            <PhotoSlot
-              image={job.heroImage}
-              label={`${job.title} photo`}
-              aspect="aspect-[5/7]"
-              className="mb-6"
-              sizes="(min-width: 1024px) 360px, 100vw"
-            />
-          )}
           <div className="rounded-2xl border border-border bg-surface p-6">
           <h2 className="text-lg font-semibold text-foreground">
             Ready to apply?
