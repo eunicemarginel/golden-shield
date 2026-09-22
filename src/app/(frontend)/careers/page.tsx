@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Link } from "next-view-transitions";
 import { Container } from "@/components/Container";
+import { PhotoSlot } from "@/components/PhotoSlot";
 import { Reveal } from "@/components/Reveal";
 import { JsonLd } from "@/components/JsonLd";
 import { WhatsAppIcon } from "@/components/icons";
@@ -85,13 +86,27 @@ export default async function CareersPage() {
                 key={job.id}
                 className="group flex flex-col gap-4 p-6 transition-colors hover:bg-surface sm:flex-row sm:items-center sm:justify-between"
               >
-                <Link href={`/careers/${job.slug}`} className="flex-1">
-                  <p className="font-semibold text-foreground group-hover:text-gold">
-                    {job.title}
-                  </p>
-                  <p className="mt-1 text-sm text-foreground-muted">
-                    {job.summary}
-                  </p>
+                <Link
+                  href={`/careers/${job.slug}`}
+                  className="flex flex-1 items-center gap-4"
+                >
+                  {job.heroImage && (
+                    <PhotoSlot
+                      image={job.heroImage}
+                      label={`${job.title} photo`}
+                      aspect="aspect-[5/7]"
+                      className="w-14 shrink-0 sm:w-16"
+                      sizes="80px"
+                    />
+                  )}
+                  <div>
+                    <p className="font-semibold text-foreground group-hover:text-gold">
+                      {job.title}
+                    </p>
+                    <p className="mt-1 text-sm text-foreground-muted">
+                      {job.summary}
+                    </p>
+                  </div>
                 </Link>
                 <div className="flex shrink-0 items-center gap-4">
                   <Link

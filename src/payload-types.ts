@@ -418,6 +418,10 @@ export interface JobOpening {
   slug: string;
   employmentType?: ('full-time' | 'part-time' | 'contract') | null;
   summary: string;
+  /**
+   * Portrait photo, 15x21cm. Upload as <slug>.jpg in Media, then pick it here.
+   */
+  heroImage?: (number | null) | Media;
   body?: {
     root: {
       type: string;
@@ -881,6 +885,7 @@ export interface JobOpeningsSelect<T extends boolean = true> {
   slug?: T;
   employmentType?: T;
   summary?: T;
+  heroImage?: T;
   body?: T;
   isOpen?: T;
   updatedAt?: T;

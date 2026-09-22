@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/Container";
 import { RichText } from "@/components/RichText";
+import { PhotoSlot } from "@/components/PhotoSlot";
 import { Button } from "@/components/Button";
 import { BackLink } from "@/components/BackLink";
 import { Reveal } from "@/components/Reveal";
@@ -73,7 +74,17 @@ export default async function JobDetailPage({ params }: Args) {
         <div className="lg:col-span-2">
           <RichText data={job.body} />
         </div>
-        <aside className="rounded-2xl border border-border bg-surface p-6">
+        <aside>
+          {job.heroImage && (
+            <PhotoSlot
+              image={job.heroImage}
+              label={`${job.title} photo`}
+              aspect="aspect-[5/7]"
+              className="mb-6"
+              sizes="(min-width: 1024px) 360px, 100vw"
+            />
+          )}
+          <div className="rounded-2xl border border-border bg-surface p-6">
           <h2 className="text-lg font-semibold text-foreground">
             Ready to apply?
           </h2>
@@ -98,6 +109,7 @@ export default async function JobDetailPage({ params }: Args) {
             <WhatsAppIcon className="h-4 w-4" />
             Apply via WhatsApp
           </a>
+          </div>
         </aside>
       </Reveal>
     </Container>

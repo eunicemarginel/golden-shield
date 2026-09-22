@@ -40,6 +40,14 @@ export const JobOpenings: CollectionConfig = {
       required: true,
     },
     {
+      name: "heroImage",
+      type: "upload",
+      relationTo: "media",
+      admin: {
+        description: "Portrait photo, 15x21cm. Upload as <slug>.jpg in Media, then pick it here.",
+      },
+    },
+    {
       name: "body",
       type: "richText",
       editor: lexicalEditor(),
