@@ -68,10 +68,18 @@ export async function getOrCreateContactForm(): Promise<number> {
   if (existing.docs[0]) {
     const doc = existing.docs[0];
     const configuredEmails = contactNotificationEmails();
-    // Self-heal: the doc was likely created before CONTACT_FORM_RECIPIENTS was
-    // set, so patch it in once recipients become available rather than
-    // requiring a manual admin edit or one-off script.
-    if (configuredEmails.length > 0 && (!doc.emails || doc.emails.length === 0)) {
+    // Self-heal: compare against what's actually configured (not just
+    // "empty or not") so this also catches drift - e.g. CONTACT_FORM_RECIPIENTS
+    // or RESEND_FROM_EMAIL changing later, or a stale value left over from
+    // an earlier test - rather than only fixing itself once, the first time
+    // the doc happens to be empty.
+    const currentSignature = JSON.stringify(
+      (doc.emails ?? []).map((e) => [e.emailTo, e.emailFrom]),
+    );
+    const configuredSignature = JSON.stringify(
+      configuredEmails.map((e) => [e.emailTo, e.emailFrom]),
+    );
+    if (configuredEmails.length > 0 && currentSignature !== configuredSignature) {
       await payload.update({
         collection: "forms",
         id: doc.id,
