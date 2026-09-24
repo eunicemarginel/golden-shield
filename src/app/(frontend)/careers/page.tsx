@@ -121,10 +121,10 @@ export default async function CareersPage() {
                     )}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`Apply for ${job.title} via WhatsApp`}
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-white transition-transform duration-200 hover:scale-110"
+                    className="flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:border-[#25D366] hover:text-[#25D366]"
                   >
-                    <WhatsAppIcon className="h-5 w-5" />
+                    <WhatsAppIcon className="h-4 w-4" />
+                    Apply via WhatsApp
                   </a>
                 </div>
               </li>
