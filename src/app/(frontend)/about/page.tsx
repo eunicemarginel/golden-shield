@@ -19,7 +19,7 @@ const values = [
   },
   {
     title: "Vision",
-    body: "To earn the trust of our clients by continuously improving the services we provide &mdash; investing in our people and our technology to exceed expectations, locally and internationally.",
+    body: "To earn the trust of our clients by continuously improving the services we provide — investing in our people and our technology to exceed expectations, locally and internationally.",
   },
   {
     title: "Values",
