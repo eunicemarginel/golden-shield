@@ -67,12 +67,29 @@ export function Header({ navData }: { navData: NavData }) {
 
   return (
     <header
+      suppressHydrationWarning
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         transparent
           ? "border-b border-transparent bg-transparent"
           : "border-b border-white/10 bg-ink/85 backdrop-blur-md"
       }`}
     >
+      {/*
+        Safety net for a stale-SSR edge case: if a cached page ever ships
+        with the wrong initial header background (seen with ISR snapshots
+        predating this fix), this runs synchronously during HTML parsing -
+        before React loads or hydrates - and corrects the class from the
+        real, current scroll position. It can only ever match what the
+        React state effect would also compute, so it never fights it.
+      */}
+      <script
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{
+          __html: `(function(){try{var h=document.currentScript.parentElement;var d=${JSON.stringify(
+            Array.from(DARK_HERO_ROUTES),
+          )};var t=d.indexOf(location.pathname)!==-1&&window.scrollY<=40;if(t){h.classList.remove("border-white/10","bg-ink/85","backdrop-blur-md");h.classList.add("border-transparent","bg-transparent");}else{h.classList.remove("border-transparent","bg-transparent");h.classList.add("border-white/10","bg-ink/85","backdrop-blur-md");}}catch(e){}})();`,
+        }}
+      />
       <div className="h-[2px] w-full bg-gradient-to-r from-gold-dark via-gold-bright to-gold-dark" />
       <div className="mx-auto flex h-20 w-full max-w-[1440px] items-center justify-between px-6 lg:px-10">
         <Link href="/" className="flex shrink-0 items-center">
