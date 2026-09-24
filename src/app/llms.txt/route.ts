@@ -1,6 +1,6 @@
 import { getPayloadClient } from "@/lib/payload";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://golden-shield.com.sg";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.golden-shield.com.sg";
 
 function section(title: string, docs: { title: string; slug: string; summary?: string }[], base: string) {
   if (docs.length === 0) return "";

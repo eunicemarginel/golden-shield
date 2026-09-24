@@ -24,7 +24,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://golden-shield.com.sg";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.golden-shield.com.sg";
 const SITE_TITLE = "Golden Shield Security Services | Singapore Security & AI Surveillance";
 const SITE_DESCRIPTION =
   "Licensed, disciplined and technology-driven security services in Singapore — guarding, AI surveillance, access control and enforcement solutions.";
@@ -56,7 +56,7 @@ const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "SecurityService",
   name: "Golden Shield Security Services",
-  url: "https://golden-shield.com.sg",
+  url: SITE_URL,
   telephone: "+65 8243 0205",
   email: "info@golden-shield.com.sg",
   address: {
