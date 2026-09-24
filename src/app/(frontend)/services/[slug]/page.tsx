@@ -7,9 +7,11 @@ import { PhotoSlot } from "@/components/PhotoSlot";
 import { BackLink } from "@/components/BackLink";
 import { Reveal } from "@/components/Reveal";
 import { JsonLd } from "@/components/JsonLd";
+import { WhatsAppIcon } from "@/components/icons";
 import { LivePreviewRefresh } from "@/components/payload/LivePreviewRefresh";
 import { getPayloadClient } from "@/lib/payload";
 import { isPreviewRequest } from "@/lib/preview";
+import { whatsappLink } from "@/lib/nav";
 import { serviceSchema, breadcrumbSchema } from "@/lib/schema";
 
 type Args = { params: Promise<{ slug: string }> };
@@ -94,6 +96,17 @@ export default async function ServiceDetailPage({ params }: Args) {
           <Button href="/contact-us" variant="primary" className="mt-4 w-full">
             Request a Quote
           </Button>
+          <a
+            href={whatsappLink(
+              `Hi Golden Shield, I'd like to enquire about ${service.title}.`,
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 flex w-full items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-[#25D366] hover:text-[#25D366]"
+          >
+            <WhatsAppIcon className="h-4 w-4" />
+            Chat on WhatsApp
+          </a>
         </aside>
       </Reveal>
     </Container>
