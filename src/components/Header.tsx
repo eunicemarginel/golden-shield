@@ -3,7 +3,7 @@
 import { Link } from "next-view-transitions";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { Container } from "@/components/Container";
 import { Button } from "@/components/Button";
 import { NavDropdown, MobileNavAccordion, type NavDropdownItem } from "@/components/NavDropdown";
@@ -38,7 +38,10 @@ export function Header({ navData }: { navData: NavData }) {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
-  useEffect(() => {
+  // Runs synchronously before paint so a stale/cached SSR snapshot (e.g. an
+  // ISR-cached page that happened to freeze the "scrolled" look) never
+  // flashes or sticks - the real scroll position always wins immediately.
+  useLayoutEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
