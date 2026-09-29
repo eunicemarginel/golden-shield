@@ -10,6 +10,17 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      // The old WordPress site used /about-us/; the rebuild uses /about.
+      // Preserve whatever ranking signal the old, already-indexed URL had.
+      {
+        source: "/about-us",
+        destination: "/about",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default withPayload(nextConfig, { devBundleServerPackages: false });
