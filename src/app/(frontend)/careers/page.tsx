@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   title: "Careers",
   description:
     "Join Golden Shield Security Services — competitive benefits, ongoing training and a clear path for career development.",
+  alternates: { canonical: "/careers" },
 };
 
 const benefits = [

@@ -44,6 +44,15 @@ export function Footer() {
                   </a>
                 </p>
               </div>
+              <div className="mt-6 max-w-sm overflow-hidden rounded-xl border border-white/10">
+                <iframe
+                  title={`Map showing ${companyInfo.name}`}
+                  src={`https://www.google.com/maps?q=${encodeURIComponent(companyInfo.address)}&output=embed`}
+                  className="h-32 w-full grayscale invert-[0.92] contrast-[0.9]"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
             </div>
 
             <div>
@@ -103,11 +112,15 @@ export function Footer() {
       </Container>
 
       <div className="relative border-t border-white/10">
-        <Container className="py-6 text-xs text-ink-muted/70">
+        <Container className="flex flex-wrap items-center gap-x-3 gap-y-2 py-6 text-xs text-ink-muted/70">
           <p>
             &copy; {new Date().getFullYear()} {companyInfo.name}. All rights
             reserved.
           </p>
+          <span className="text-ink-muted/40">&middot;</span>
+          <Link href="/privacy-policy" className="hover:text-gold-bright">
+            Privacy Policy
+          </Link>
         </Container>
       </div>
     </footer>

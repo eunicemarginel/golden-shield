@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   title: "AI & Digital Security Technology",
   description:
     "How Golden Shield Security Services uses AI detection, virtual guard patrolling and a 24/7 command centre to extend physical security coverage.",
+  alternates: { canonical: "/ai-security-services" },
 };
 
 const aiProductSlugs = [

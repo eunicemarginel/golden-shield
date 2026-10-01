@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Industries We Protect",
   description:
     "Tailored security programmes for schools, healthcare, retail, logistics, hospitality and more sectors across Singapore.",
+  alternates: { canonical: "/industries" },
 };
 
 export default async function IndustriesPage() {

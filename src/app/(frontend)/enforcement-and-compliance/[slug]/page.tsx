@@ -35,6 +35,7 @@ export async function generateMetadata({ params }: Args): Promise<Metadata> {
   return {
     title: service.title,
     description: service.summary,
+    alternates: { canonical: `/enforcement-and-compliance/${service.slug}` },
   };
 }
 

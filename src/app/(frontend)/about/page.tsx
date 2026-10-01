@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "About Us",
   description:
     "Golden Shield Security Services is a Singapore-headquartered security company founded in 2019, combining experienced manpower with in-house technology.",
+  alternates: { canonical: "/about" },
 };
 
 const values = [

@@ -31,6 +31,7 @@ export async function generateMetadata({ params }: Args): Promise<Metadata> {
   return {
     title: job.title,
     description: job.summary,
+    alternates: { canonical: `/careers/${job.slug}` },
   };
 }
 

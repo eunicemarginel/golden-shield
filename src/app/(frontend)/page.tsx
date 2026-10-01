@@ -197,6 +197,61 @@ export default async function Home() {
         </Container>
       </section>
 
+      <section className="py-24">
+        <Container>
+          <Reveal className="max-w-2xl">
+            <h2 className="text-sm font-semibold uppercase tracking-widest text-gold">
+              Why Golden Shield
+            </h2>
+            <p className="mt-3 text-3xl font-bold tracking-tight text-foreground">
+              Why Singapore businesses choose Golden Shield
+            </p>
+          </Reveal>
+          <div className="mt-10 grid gap-10 text-foreground-muted lg:grid-cols-2">
+            <p>
+              Golden Shield Security Services was founded in Singapore in
+              2019 by a management and operations team with over a decade of
+              experience each in security, defence and law enforcement.
+              Every officer we deploy is licensed under the Police Licensing
+              &amp; Regulatory Department (PLRD), and we&apos;re a member of
+              the Security Association of Singapore (SAS) — so clients are
+              working with an agency held to the same regulatory standard as
+              the rest of the industry, not an informal outfit.
+            </p>
+            <p>
+              What sets us apart is how closely our manpower and technology
+              work together. Our in-house team develops AI-powered detection
+              and monitoring tools locally, rather than reselling
+              off-the-shelf systems, so our CCTV, access control and
+              behavioural-alert products are built to plug directly into how
+              our guarding teams actually operate on-site. A 24/7 command
+              centre ties it all together, giving clients one point of
+              contact for monitoring, incident response and reporting
+              instead of juggling separate guarding and technology vendors.
+            </p>
+            <p>
+              We work across residential condominiums, commercial
+              buildings, schools, healthcare facilities, retail, logistics
+              and event sites island-wide, and we&apos;re one of the few
+              Singapore-based security companies able to mount operations
+              overseas when a client&apos;s needs extend beyond our home
+              market. Each engagement starts with understanding the actual
+              risk profile of a site rather than applying a one-size-fits-all
+              package, which is why our proposals vary significantly between
+              a condominium, a construction site and a one-off event.
+            </p>
+            <p>
+              Whether you need a single licensed security officer, a full
+              guarding team, AI surveillance for an existing site, or a
+              combination of all three, our team can scope a free,
+              no-obligation assessment and walk you through exactly what
+              coverage would look like for your property before you commit
+              to anything.
+            </p>
+          </div>
+        </Container>
+      </section>
+
       <section className="border-t border-ink-border bg-ink py-20 text-white">
         <Container>
           <Reveal className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">

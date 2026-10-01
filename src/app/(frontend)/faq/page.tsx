@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "FAQ",
   description:
     "Answers to common questions about Golden Shield Security Services' guarding, technology and enforcement services.",
+  alternates: { canonical: "/faq" },
 };
 
 const categoryLabels: Record<string, string> = {

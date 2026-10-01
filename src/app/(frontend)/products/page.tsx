@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Products & AI Technology",
   description:
     "CCTV, access control, AI human and vehicle detection, virtual guard patrolling and more from Golden Shield Security Services.",
+  alternates: { canonical: "/products" },
 };
 
 export default async function ProductsPage() {

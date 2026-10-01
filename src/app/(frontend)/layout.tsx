@@ -25,7 +25,11 @@ const geistMono = Geist_Mono({
 });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.golden-shield.com.sg";
-const SITE_TITLE = "Golden Shield Security Services | Singapore Security & AI Surveillance";
+// Kept under 60 characters so Google doesn't truncate it in search results.
+const SITE_TITLE = "Golden Shield | Security Services in Singapore";
+// Social previews aren't bound by the same length limit, so OG/Twitter use
+// the fuller, more descriptive phrasing.
+const SOCIAL_TITLE = "Golden Shield Security Services | Singapore Security & AI Surveillance";
 const SITE_DESCRIPTION =
   "Licensed, disciplined and technology-driven security services in Singapore — guarding, AI surveillance, access control and enforcement solutions.";
 
@@ -33,20 +37,23 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: SITE_TITLE,
-    template: "%s | Golden Shield Security Services",
+    template: "%s | Golden Shield",
   },
   description: SITE_DESCRIPTION,
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     siteName: "Golden Shield Security Services",
-    title: SITE_TITLE,
+    title: SOCIAL_TITLE,
     description: SITE_DESCRIPTION,
     url: SITE_URL,
     images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: SITE_TITLE,
+    title: SOCIAL_TITLE,
     description: SITE_DESCRIPTION,
     images: ["/og-image.png"],
   },
@@ -54,8 +61,13 @@ export const metadata: Metadata = {
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
-  "@type": "SecurityService",
+  // "SecurityService" isn't a real schema.org type - it 404s on schema.org
+  // itself, so Google's structured data parser can't recognize it as a
+  // LocalBusiness. "ProfessionalService" is the closest real LocalBusiness
+  // subtype schema.org defines (there's no dedicated security-company type).
+  "@type": "ProfessionalService",
   name: "Golden Shield Security Services",
+  image: `${SITE_URL}/brand/gss-logo.png`,
   url: SITE_URL,
   telephone: "+65 8243 0205",
   email: "info@golden-shield.com.sg",

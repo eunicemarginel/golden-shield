@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   title: "Contact Us",
   description:
     "Get a free security assessment from Golden Shield Security Services. Call, email or send an enquiry.",
+  alternates: { canonical: "/contact-us" },
 };
 
 const trustPoints = [

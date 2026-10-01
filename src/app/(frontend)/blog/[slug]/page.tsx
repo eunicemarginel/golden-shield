@@ -32,6 +32,7 @@ export async function generateMetadata({ params }: Args): Promise<Metadata> {
   return {
     title: post.title,
     description: post.excerpt,
+    alternates: { canonical: `/blog/${post.slug}` },
   };
 }
 

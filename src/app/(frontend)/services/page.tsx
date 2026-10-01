@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Security Services",
   description:
     "Licensed guarding, patrol and event security services for residential, commercial and industrial sites in Singapore.",
+  alternates: { canonical: "/services" },
 };
 
 export default async function ServicesPage() {

@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Blog & Resources",
   description:
     "Security guides, compliance explainers and industry insights from Golden Shield Security Services.",
+  alternates: { canonical: "/blog" },
 };
 
 export default async function BlogPage() {

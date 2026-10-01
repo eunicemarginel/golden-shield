@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Enforcement & Compliance",
   description:
     "Security audits, private investigation, red teaming and outcome-based contract consultancy from Golden Shield Security Services.",
+  alternates: { canonical: "/enforcement-and-compliance" },
 };
 
 export default async function EnforcementPage() {
