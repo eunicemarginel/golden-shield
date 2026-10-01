@@ -6,6 +6,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { getPayloadClient } from "@/lib/payload";
+import { companyInfo } from "@/lib/nav";
 import "./globals.css";
 
 // Applies to every page in this segment unless a page sets its own value.
@@ -80,6 +81,7 @@ const organizationJsonLd = {
   },
   areaServed: "Singapore",
   foundingDate: "2019",
+  sameAs: [companyInfo.social.facebook, companyInfo.social.linkedin],
 };
 
 async function getNavData() {

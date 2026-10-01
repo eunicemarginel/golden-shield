@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Container } from "@/components/Container";
 import { Button } from "@/components/Button";
 import { Reveal } from "@/components/Reveal";
-import { PinIcon, PhoneIcon, MailIcon, BadgeIcon } from "@/components/icons";
+import { PinIcon, PhoneIcon, MailIcon, BadgeIcon, FacebookIcon, LinkedInIcon } from "@/components/icons";
 import { companyInfo, primaryNav, secondaryNav } from "@/lib/nav";
 
 export function Footer() {
@@ -29,7 +29,14 @@ export function Footer() {
               <div className="mt-6 space-y-2.5">
                 <p className="flex items-start gap-2.5 text-sm">
                   <span className="mt-0.5 text-gold-bright"><PinIcon /></span>
-                  {companyInfo.address}
+                  <a
+                    href={`https://www.google.com/maps?q=${encodeURIComponent(companyInfo.address)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-gold-bright"
+                  >
+                    {companyInfo.address}
+                  </a>
                 </p>
                 <p className="flex items-center gap-2.5 text-sm">
                   <span className="text-gold-bright"><PhoneIcon /></span>
@@ -52,6 +59,26 @@ export function Footer() {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
+              </div>
+              <div className="mt-6 flex gap-3">
+                <a
+                  href={companyInfo.social.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Golden Shield Security Services on Facebook"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-ink-muted transition-colors hover:border-gold-bright hover:text-gold-bright"
+                >
+                  <FacebookIcon className="h-4 w-4" />
+                </a>
+                <a
+                  href={companyInfo.social.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Golden Shield Security Services on LinkedIn"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-ink-muted transition-colors hover:border-gold-bright hover:text-gold-bright"
+                >
+                  <LinkedInIcon className="h-4 w-4" />
+                </a>
               </div>
             </div>
 

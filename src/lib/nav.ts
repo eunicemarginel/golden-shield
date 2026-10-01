@@ -35,6 +35,10 @@ export const companyInfo = {
   whatsappNumber: "6582430205",
   email: "info@golden-shield.com.sg",
   address: "20 Sin Ming Lane #04-67, Singapore 573968",
+  social: {
+    facebook: "https://www.facebook.com/people/Golden-Shield-Security-Services/100093159111496/",
+    linkedin: "https://www.linkedin.com/company/golden-shield-security-services/",
+  },
 };
 
 export function whatsappLink(message: string) {
