@@ -60,7 +60,7 @@ export default async function AboutPage() {
             <h1 className="mt-3 max-w-2xl text-4xl font-bold tracking-tight">
               The Golden Standard in Singapore Security
             </h1>
-            <div className="mt-4 max-w-3xl space-y-4 text-ink-muted">
+            <div className="mt-6 grid gap-x-10 gap-y-4 text-ink-muted lg:grid-cols-2">
               <p>
                 Founded in Singapore in 2019, Golden Shield Security Services
                 brought together a management and operations team with over a
