@@ -81,7 +81,11 @@ const organizationJsonLd = {
   },
   areaServed: "Singapore",
   foundingDate: "2019",
-  sameAs: [companyInfo.social.facebook, companyInfo.social.linkedin],
+  sameAs: [
+    companyInfo.social.facebook,
+    companyInfo.social.linkedin,
+    companyInfo.googleBusinessUrl,
+  ],
 };
 
 async function getNavData() {

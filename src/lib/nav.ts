@@ -39,6 +39,7 @@ export const companyInfo = {
     facebook: "https://www.facebook.com/people/Golden-Shield-Security-Services/100093159111496/",
     linkedin: "https://www.linkedin.com/company/golden-shield-security-services/",
   },
+  googleBusinessUrl: "https://maps.app.goo.gl/SRakRSQbLtrFkXHVA",
 };
 
 export function whatsappLink(message: string) {

@@ -30,7 +30,7 @@ export function Footer() {
                 <p className="flex items-start gap-2.5 text-sm">
                   <span className="mt-0.5 text-gold-bright"><PinIcon /></span>
                   <a
-                    href={`https://www.google.com/maps?q=${encodeURIComponent(companyInfo.address)}`}
+                    href={companyInfo.googleBusinessUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-gold-bright"
