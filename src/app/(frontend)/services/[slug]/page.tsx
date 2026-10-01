@@ -65,7 +65,7 @@ export default async function ServiceDetailPage({ params }: Args) {
         ]}
       />
       <BackLink href="/services" label="Back to Services" />
-      <Reveal>
+      <Reveal immediate>
         <span className="mt-6 block text-sm font-semibold uppercase tracking-widest text-gold">
           Service
         </span>

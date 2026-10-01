@@ -87,7 +87,7 @@ export default async function Home() {
         <HeroVideo />
         <div className="grid-texture pointer-events-none absolute inset-0 z-[1]" />
         <Container className="relative z-10 flex flex-col gap-8 pt-28 pb-20 sm:gap-10 sm:py-24 lg:py-36">
-          <Reveal className="max-w-3xl">
+          <Reveal className="max-w-3xl" immediate>
             <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-gold-bright">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold-bright opacity-75" />

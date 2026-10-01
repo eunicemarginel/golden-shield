@@ -61,7 +61,7 @@ export default async function JobDetailPage({ params }: Args) {
         ]}
       />
       <BackLink href="/careers" label="Back to Careers" />
-      <Reveal>
+      <Reveal immediate>
         <span className="mt-6 block text-sm font-semibold uppercase tracking-widest text-gold">
           {job.employmentType?.replace("-", " ")}
         </span>

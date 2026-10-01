@@ -63,7 +63,7 @@ export default async function BlogPostPage({ params }: Args) {
         ]}
       />
       <BackLink href="/blog" label="Back to Blog" />
-      <Reveal>
+      <Reveal immediate>
         <span className="mt-6 block text-sm font-semibold uppercase tracking-widest text-gold">
           {new Date(post.publishedDate).toLocaleDateString("en-SG", {
             year: "numeric",

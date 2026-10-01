@@ -75,7 +75,7 @@ export default async function IndustryDetailPage({ params }: Args) {
         ])}
       />
       <BackLink href="/industries" label="Back to Industries" />
-      <Reveal>
+      <Reveal immediate>
         <span className="mt-6 block text-sm font-semibold uppercase tracking-widest text-gold">
           Industry
         </span>

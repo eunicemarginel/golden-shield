@@ -34,7 +34,7 @@ export default async function ContactPage() {
       <section className="relative overflow-hidden bg-ink text-white">
         <div className="grid-texture pointer-events-none absolute inset-0" />
         <Container className="relative pt-28 pb-20">
-          <Reveal>
+          <Reveal immediate>
             <span className="text-sm font-semibold uppercase tracking-widest text-gold-bright">
               Contact Us
             </span>

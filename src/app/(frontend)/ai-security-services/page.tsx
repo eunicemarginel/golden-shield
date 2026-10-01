@@ -43,7 +43,7 @@ export default async function AiSecurityServicesPage() {
       <section className="relative overflow-hidden bg-ink pt-32 pb-24 text-white">
         <div className="grid-texture pointer-events-none absolute inset-0" />
         <Container className="relative">
-          <Reveal className="max-w-2xl">
+          <Reveal className="max-w-2xl" immediate>
             <span className="text-xs font-semibold uppercase tracking-[0.3em] text-gold-bright">
               AI &amp; Digital Technology
             </span>

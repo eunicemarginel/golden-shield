@@ -65,7 +65,7 @@ export default async function EnforcementDetailPage({ params }: Args) {
         ]}
       />
       <BackLink href="/enforcement-and-compliance" label="Back to Enforcement & Compliance" />
-      <Reveal>
+      <Reveal immediate>
         <span className="mt-6 block text-sm font-semibold uppercase tracking-widest text-gold">
           Enforcement &amp; Compliance
         </span>
