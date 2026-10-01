@@ -205,7 +205,7 @@ export default async function Home() {
               Why Golden Shield
             </h2>
             <p className="mt-3 text-3xl font-bold tracking-tight text-foreground">
-              Why Singapore businesses choose Golden Shield
+              Why Singapore Businesses Choose Golden Shield
             </p>
           </Reveal>
           <div className="mt-6 max-w-2xl text-foreground-muted">
