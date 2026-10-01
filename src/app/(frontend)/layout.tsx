@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ViewTransitions } from "next-view-transitions";
 import { MotionConfig } from "motion/react";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
@@ -140,6 +141,9 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
             <Footer />
             <WhatsAppButton />
           </MotionConfig>
+          {process.env.NEXT_PUBLIC_GA_ID && (
+            <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+          )}
         </body>
       </html>
     </ViewTransitions>
