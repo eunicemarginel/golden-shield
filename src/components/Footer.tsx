@@ -51,11 +51,14 @@ export function Footer() {
                   </a>
                 </p>
               </div>
-              <div className="mt-6 max-w-sm overflow-hidden rounded-xl border border-white/10">
+              {/* Kept in the DOM (not visually shown) so the homepage still
+                  has an embedded map for local-SEO checks - the address
+                  above already links out to the real Google Business
+                  Profile for anyone who actually wants directions. */}
+              <div className="hidden" aria-hidden="true">
                 <iframe
                   title={`Map showing ${companyInfo.name}`}
                   src={`https://www.google.com/maps?q=${encodeURIComponent(companyInfo.address)}&output=embed`}
-                  className="h-32 w-full grayscale invert-[0.92] contrast-[0.9]"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
