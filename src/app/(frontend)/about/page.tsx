@@ -58,7 +58,7 @@ export default async function AboutPage() {
               About Us
             </span>
             <h1 className="mt-3 max-w-2xl text-4xl font-bold tracking-tight">
-              The golden standard in Singapore security
+              The Golden Standard in Singapore Security
             </h1>
             <div className="mt-4 max-w-3xl space-y-4 text-ink-muted">
               <p>
