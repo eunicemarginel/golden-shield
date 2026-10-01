@@ -83,6 +83,17 @@ export default async function AboutPage() {
                 (PLRD) and is a member of the Security Association of
                 Singapore (SAS).
               </p>
+              <p>
+                We work across residential condominiums, commercial
+                buildings, schools, healthcare facilities, retail, logistics
+                and event sites island-wide, and a 24/7 command centre ties
+                guarding and technology together under one point of contact
+                for monitoring, incident response and reporting. Every
+                engagement starts with understanding the actual risk profile
+                of a site rather than applying a one-size-fits-all package,
+                which is why our proposals vary significantly between a
+                condominium, a construction site and a one-off event.
+              </p>
             </div>
           </Reveal>
         </Container>
